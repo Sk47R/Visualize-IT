@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <div>
-        <Link to="suduko-solver">Suduko Solver</Link>
+        <Link to="sudoku-solver">Suduko Solver</Link>
       </div>
       <div>
         <Link to="nqueens">NQueens</Link>
