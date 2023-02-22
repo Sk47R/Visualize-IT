@@ -1,8 +1,10 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
+
 import Home from "../Pages/Home/Home";
 import NQueen from "../Pages/NQueen/NQueen";
 import PathFinder from "../Pages/PathFinder/PathFinder";
 import SudokuSolver from "../Pages/SudokuSolver/SudokuSolver";
+import TowerOfHanoi from "../Pages/TowerOfHanoi/TowerOfHanoi";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/path-finder",
         element: <PathFinder />,
+      },
+      {
+        path: "/tower-of-hanoi",
+        element: <TowerOfHanoi />,
       },
     ],
   },

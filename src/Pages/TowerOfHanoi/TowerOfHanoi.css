@@ -1,0 +1,54 @@
+.tower-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Tower {
+  margin: 0 35px;
+  height: 300px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.disks {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 80px;
+  margin: 0 auto;
+}
+
+.Disk {
+  width: 140px;
+  height: 20px;
+  background-color: #4f351f;
+  margin-top: 3px;
+  color: #fafafa;
+  font-size: 18px;
+  font-weight: 100;
+  border: 3px solid #331001;
+  border-radius: 10px;
+}
+
+.tower-bg {
+  position: absolute;
+}
+
+.tower-pillar {
+  width: 20px;
+  height: 220px;
+  background-color: #cf7b3b;
+  margin: 0 auto;
+}
+
+.tower-base {
+  width: 240px;
+  height: 15px;
+  background-color: #cf7b3b;
+  margin: 0 auto;
+}
