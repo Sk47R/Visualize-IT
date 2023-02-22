@@ -6,10 +6,14 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function SudokuSolver() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Sudoku Solver";
+  }, []);
 
   const [grid, setGrid] = useState(
     Array(9)
