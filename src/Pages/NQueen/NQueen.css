@@ -1,0 +1,12 @@
+.nqueen {
+  /* background-color: red; */
+}
+.button {
+  margin-top: 2rem;
+}
+
+.grid-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
