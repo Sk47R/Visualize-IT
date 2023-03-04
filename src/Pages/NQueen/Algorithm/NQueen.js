@@ -1,11 +1,10 @@
 function NQueenAlgo(grid, rows, cols) {
   const animation = [];
-  let isAnimationNeeded = true;
+  let addAnimation = true;
   const gridSize = grid.length;
 
   function saveAnimation(i, j) {
     const temp = JSON.parse(JSON.stringify(grid));
-
     temp[i][j].isActive = true;
     animation.push(temp); // save animation
   }
@@ -42,19 +41,19 @@ function NQueenAlgo(grid, rows, cols) {
     if (row >= gridSize) {
       // all queen placed
       const solutionGrid = JSON.parse(JSON.stringify(grid));
-      if (isAnimationNeeded) {
+      if (addAnimation) {
         animation.push(solutionGrid);
-        isAnimationNeeded = false;
+        addAnimation = false;
       }
       return true;
     }
 
     // checking for safe position in each column for all rows
     for (let j = 0; j < gridSize; j++) {
-      if (isAnimationNeeded) saveAnimation(row, j);
+      if (addAnimation) saveAnimation(row, j);
       if (isSafe(row, j)) {
         grid[row][j].hasQueen = true;
-        if (isAnimationNeeded) saveAnimation(row, j);
+        if (addAnimation) saveAnimation(row, j);
         if (placeQueen(row + 1)) return true;
 
         grid[row][j].hasQueen = false; //backtracking
@@ -64,7 +63,7 @@ function NQueenAlgo(grid, rows, cols) {
     return false;
   }
   if (placeQueen(0)) {
-    console.log("soln fould");
+    console.log("Solution Found!!!");
   }
 
   return { grid, animation };

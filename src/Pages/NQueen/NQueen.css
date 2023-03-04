@@ -1,5 +1,35 @@
 .nqueen {
-  /* background-color: red; */
+  width: 100%;
+  font-size: 1.6rem;
+}
+.nqueen_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: red;
+}
+.nqueen_div_top {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1rem;
+  background-color: blue;
+}
+
+.nqueen_div_top_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: yellow;
+  width: 28rem;
+}
+.margin-right-2 {
+  margin-right: 2rem;
 }
 .button {
   margin-top: 2rem;

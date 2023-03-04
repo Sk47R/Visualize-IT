@@ -1,4 +1,11 @@
 .grid {
   border: 1rem solid #7c3f03;
   border-radius: 5px;
+  width: 48rem;
+  height: 48rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 }

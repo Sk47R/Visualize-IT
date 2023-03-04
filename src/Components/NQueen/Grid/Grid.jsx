@@ -2,7 +2,7 @@ import React from "react";
 import Node from "../Node/Node";
 import "./Grid.css";
 
-const Grid = ({ grid }) => {
+const Grid = ({ grid, gridSize }) => {
   console.log("rendered");
   return (
     <div className="grid">
@@ -19,6 +19,7 @@ const Grid = ({ grid }) => {
                   row={row}
                   hasQueen={node.hasQueen}
                   isActive={node.isActive}
+                  gridSize={gridSize}
                 ></Node>
               );
             })}
