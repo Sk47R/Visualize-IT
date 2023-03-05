@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import "./Node.css";
+import AssistantPhotoIcon from "@mui/icons-material/AssistantPhoto";
 
 export default class Node extends Component {
   render() {
@@ -14,13 +15,12 @@ export default class Node extends Component {
       onMouseUp,
       row,
     } = this.props;
-    const extraClassName = isFinish
-      ? "pathFinder-node-finish"
-      : isStart
-      ? "pathFinder-node-start"
-      : isWall
-      ? "pathFinder-node-wall"
-      : "";
+    const extraClassName =
+      isWall && !isStart && !isFinish ? "pathFinder-node-wall" : "";
+
+    const startArrowClickHandler = () => {
+      console.log("first");
+    };
 
     return (
       <div
@@ -29,7 +29,15 @@ export default class Node extends Component {
         onMouseDown={() => onMouseDown(row, col)}
         onMouseEnter={() => onMouseEnter(row, col)}
         onMouseUp={() => onMouseUp()}
-      ></div>
+      >
+        {isStart && (
+          <KeyboardArrowRightIcon
+            onClick={startArrowClickHandler}
+            className="node-icon"
+          />
+        )}
+        {isFinish && <AssistantPhotoIcon className="node-icon" />}
+      </div>
     );
   }
 }

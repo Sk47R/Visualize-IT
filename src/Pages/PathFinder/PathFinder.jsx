@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Astar from "./Algorithms/astar";
 import "./PathFinder.css";
+import Navbar from "../../Components/Navbar/Navbar";
+
 const rows = 13;
 const cols = 35;
 const START_NODE_ROW = 4;
@@ -164,14 +166,15 @@ const PathFinder = () => {
   };
 
   return (
-    <>
+    <div className="pathFinder">
+      <Navbar />
       <button onClick={() => visualizeDijkstra()}>
         Visualize Dijkstra's Algorithm
       </button>
       <div className="pathFinder-grid">
         {grid.map((row, rowIdx) => {
           return (
-            <div key={rowIdx}>
+            <div key={rowIdx} className="pathFinder-grid-row">
               {row.map((node, nodeIdx) => {
                 const { row, col, isEnd, isStart, isWall } = node;
                 return (
@@ -193,7 +196,7 @@ const PathFinder = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
