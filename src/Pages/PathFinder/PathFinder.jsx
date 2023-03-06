@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Astar from "./Algorithms/astar";
 import "./PathFinder.css";
-import Navbar from "../../Components/Navbar/Navbar";
 
 const rows = 13;
 const cols = 35;
@@ -167,7 +166,6 @@ const PathFinder = () => {
 
   return (
     <div className="pathFinder">
-      <Navbar />
       <button onClick={() => visualizeDijkstra()}>
         Visualize Dijkstra's Algorithm
       </button>

@@ -5,7 +5,6 @@ import Slider from "@mui/material/Slider";
 
 import { useState, useEffect } from "react";
 import NQueenAlgo from "./Algorithm/NQueen";
-import Navbar from "../../Components/Navbar/Navbar";
 
 const DEFAULT_SPEED = 4;
 const MIN_SPEED = 1;
@@ -92,7 +91,6 @@ const NQueen = () => {
 
   return (
     <div className="nqueen">
-      <Navbar />
       <div className="nqueen_div">
         <div className="nqueen_div_top">
           <div className="nqueen_div_top_item margin-right-2">
