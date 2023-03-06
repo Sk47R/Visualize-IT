@@ -8,7 +8,9 @@ export function dijkstra(grid, startNode, finishNode) {
     // If the next neighbor is wall we skip it
     if (closestNode.isWall) continue;
     // if next neighbor is at infinity we stop
-    if (closestNode.distance === Infinity) return visitedNodesInOrder;
+    if (closestNode.distance === Infinity) {
+      return visitedNodesInOrder;
+    }
     closestNode.isVisited = true;
     visitedNodesInOrder.push(closestNode);
     if (closestNode === finishNode) return visitedNodesInOrder;

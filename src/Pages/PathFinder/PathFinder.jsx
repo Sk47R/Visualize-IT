@@ -6,15 +6,18 @@ import { useEffect } from "react";
 import Astar from "./Algorithms/astar";
 import "./PathFinder.css";
 import Navbar from "../../Components/Navbar/Navbar";
+import mazeJava from "./Algorithms/mazeJava";
+import mazeRecursive from "./Algorithms/mazeRecursive";
 
 const rows = 13;
 const cols = 35;
-const START_NODE_ROW = 4;
-const START_NODE_COL = 7;
-const FINISH_NODE_ROW = rows - 1;
-const FINISH_NODE_COL = cols - 1;
+const START_NODE_ROW = 2;
+const START_NODE_COL = 2;
+const FINISH_NODE_ROW = 12;
+const FINISH_NODE_COL = 22;
 
 const PathFinder = () => {
+  const [maze, setMaze] = useState(false);
   const [grid, setGrid] = useState([]);
   const [mouseIsPressed, setMouseIsPressed] = useState(false);
 
@@ -45,9 +48,11 @@ const PathFinder = () => {
       g: 0,
       f: 0,
       h: 0,
+      isCurrent: false,
       isStart: row === START_NODE_ROW && col === START_NODE_COL,
       isEnd: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
       distance: Infinity,
+      isMazeVisited: false,
       isVisited: false,
       isWall: false,
       previousNode: null,
@@ -59,6 +64,38 @@ const PathFinder = () => {
         if (i < rows - 1) this.neighbors.push(grid[i + 1][j]);
         if (j > 0) this.neighbors.push(grid[i][j - 1]);
         if (j < cols - 1) this.neighbors.push(grid[i][j + 1]);
+      },
+      checkNeighbors(grid) {
+        // for maze
+        let neighbor = [];
+
+        let i = row;
+        let j = col;
+
+        if (j > 0) {
+          let top = grid[i][j - 1];
+          if (top && !top.isMazeVisited) neighbor.push(top);
+        }
+        if (i < rows - 1) {
+          let right = grid[i + 1][j];
+          if (right && !right.isMazeVisited) neighbor.push(right);
+        }
+        if (j < cols - 1) {
+          let bottom = grid[i][j + 1];
+          if (bottom && !bottom.isMazeVisited) neighbor.push(bottom);
+        }
+        if (i > 0) {
+          let left = grid[i - 1][j];
+          if (left && !left.isMazeVisited) neighbor.push(left);
+        }
+
+        if (neighbor.length > 0) {
+          // picking up random neighbor
+          let r = Math.floor(Math.random(0, neighbor.length));
+          return neighbor[r];
+        } else {
+          return undefined;
+        }
       },
     };
   };
@@ -150,6 +187,37 @@ const PathFinder = () => {
     }
   };
 
+  const createMaze = (e) => {
+    const grid = getInitialGrid();
+    let current = grid[0][0];
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        if (i % 2 != 0 || j % 2 != 0) {
+          grid[i][j].isWall = true;
+          grid[i][j].isMazeVisited = true;
+        }
+      }
+    }
+    setGrid(grid);
+    const newGrid = mazeRecursive(grid, current, rows, cols);
+
+    setMaze((prev) => !prev);
+  };
+  const createPrimMaze = (e) => {
+    const grid = getInitialGrid();
+    let current = grid[0][0];
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < cols; j++) {
+        grid[i][j].isWall = true;
+      }
+    }
+    setGrid(grid);
+    const newGrid = mazeJava(grid, current, rows, cols);
+
+    setGrid(newGrid);
+    setMaze((prev) => !prev);
+  };
+
   const visualizeDijkstra = () => {
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
@@ -171,18 +239,29 @@ const PathFinder = () => {
       <button onClick={() => visualizeDijkstra()}>
         Visualize Dijkstra's Algorithm
       </button>
+      <button onClick={() => createMaze()}>Create Maze</button>
       <div className="pathFinder-grid">
         {grid.map((row, rowIdx) => {
           return (
             <div key={rowIdx} className="pathFinder-grid-row">
               {row.map((node, nodeIdx) => {
-                const { row, col, isEnd, isStart, isWall } = node;
+                const {
+                  row,
+                  col,
+                  isEnd,
+                  isStart,
+                  isWall,
+                  isMazeVisited,
+                  isCurrent,
+                } = node;
                 return (
                   <Node
                     key={nodeIdx}
                     col={col}
                     isFinish={isEnd}
                     isStart={isStart}
+                    isCurrent={isCurrent}
+                    isMazeVisited={isMazeVisited}
                     isWall={isWall}
                     mouseIsPressed={mouseIsPressed}
                     onMouseDown={(row, col) => handleMouseDown(row, col)}

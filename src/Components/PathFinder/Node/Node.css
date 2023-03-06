@@ -2,6 +2,7 @@
   width: 40px;
   height: 40px;
   outline: 1px solid rgb(175, 216, 248);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +13,9 @@
 .pathFinder-node-finish {
   background-color: red;
 }
-
+.red {
+  background-color: red;
+}
 .pathFinder-node-start {
   background-color: green;
 }

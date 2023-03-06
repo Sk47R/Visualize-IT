@@ -14,6 +14,8 @@ export default class Node extends Component {
       onMouseEnter,
       onMouseUp,
       row,
+      isCurrent,
+      isMazeVisited,
     } = this.props;
     const extraClassName =
       isWall && !isStart && !isFinish ? "pathFinder-node-wall" : "";
@@ -22,10 +24,12 @@ export default class Node extends Component {
       console.log("first");
     };
 
+    const mazeClass = "";
+
     return (
       <div
         id={`pathFinder-node-${row}-${col}`}
-        className={`pathFinder-node ${extraClassName}`}
+        className={`pathFinder-node ${extraClassName} ${mazeClass}`}
         onMouseDown={() => onMouseDown(row, col)}
         onMouseEnter={() => onMouseEnter(row, col)}
         onMouseUp={() => onMouseUp()}
