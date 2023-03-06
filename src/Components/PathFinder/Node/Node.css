@@ -1,7 +1,7 @@
 .pathFinder-node {
   width: 40px;
   height: 40px;
-  outline: 1px solid rgb(175, 216, 248);
+  outline: 1px solid #c6c6c6;
 
   display: flex;
   justify-content: center;
@@ -54,7 +54,7 @@
 }
 
 .pathFinder-node-wall {
-  background-color: rgb(12, 53, 71);
+  background-color: #c6c6c6;
 }
 
 .pathFinder-node-shortest-path {

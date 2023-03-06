@@ -8,3 +8,20 @@ body {
 html {
   font-size: 63.5%;
 }
+
+:root {
+  --sidebar-background: #111111;
+  --sidebarIcon: #777777;
+  --sidebarIcon-hover: #c6c6c6;
+  --grey: #c0c0c0;
+
+  --background-color: #fafafa;
+  --primary-color: #9b85ff;
+  --primaryLight-color: #e2dcfd;
+  --white-color: white;
+  --body-color: #eeeeee;
+  --submit-color: #4caf50;
+  --cancel-color: #dd1919;
+  --golden-color: goldenrod;
+  --input-border: #cacaca;
+}

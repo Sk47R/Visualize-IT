@@ -1,24 +1,32 @@
 import React, { Component } from "react";
-import Node from "../../Components/PathFinder/Node/Node";
-import { dijkstra, getNodesInShortestPathOrder } from "./Algorithms/dijkstra";
+import Node from "../Node/Node";
+import { dijkstra, getNodesInShortestPathOrder } from "../Algorithms/dijkstra";
 import { useState } from "react";
 import { useEffect } from "react";
-import Astar from "./Algorithms/astar";
+import Astar from "../Algorithms/astar";
+import slowTurtle from "../../../assets/images/mdi_tortoise.png";
+import slowestTurtle from "../../../assets/images/fluent_animal-turtle-24-filled.png";
+import slowRabbit from "../../../assets/images/fluent_animal-rabbit-20-filled.png";
+import fastRabbit from "../../../assets/images/mdi_rabbit.png";
+
 import "./PathFinder.css";
-import Navbar from "../../Components/Navbar/Navbar";
-import mazeJava from "./Algorithms/mazeJava";
-import mazeRecursive from "./Algorithms/mazeRecursive";
+import Navbar from "../../Navbar/Navbar";
+
+import mazeJava from "../Algorithms/mazeJava";
+import mazeRecursive from "../Algorithms/mazeRecursive";
 
 const rows = 13;
-const cols = 35;
+const cols = 32;
 const START_NODE_ROW = 2;
 const START_NODE_COL = 2;
 const FINISH_NODE_ROW = 12;
 const FINISH_NODE_COL = 22;
+const DEFAULT_SPEED = 4;
 
 const PathFinder = () => {
   const [maze, setMaze] = useState(false);
   const [grid, setGrid] = useState([]);
+  const [speed, setSpeed] = useState(DEFAULT_SPEED);
   const [mouseIsPressed, setMouseIsPressed] = useState(false);
 
   const getInitialGrid = () => {
@@ -137,7 +145,7 @@ const PathFinder = () => {
       if (i === visitedNodesInOrder.length) {
         setTimeout(() => {
           animateShortestPath(nodesInShortestPathOrder);
-        }, 10 * i);
+        }, i * speed * 5);
         return;
       }
       setTimeout(() => {
@@ -145,7 +153,7 @@ const PathFinder = () => {
         document.getElementById(
           `pathFinder-node-${node.row}-${node.col}`
         ).className = "pathFinder-node pathFinder-node-visited";
-      }, 10 * i);
+      }, i * speed * 5);
     }
   };
 
@@ -156,7 +164,7 @@ const PathFinder = () => {
         document.getElementById(
           `pathFinder-node-${node.row}-${node.col}`
         ).className = "pathFinder-node pathFinder-node-shortest-path";
-      }, 10 * i);
+      }, i * speed * 5);
     }
   };
   const visualizePath = (visitedNodes, path) => {
@@ -164,14 +172,14 @@ const PathFinder = () => {
       if (i === visitedNodes.length) {
         setTimeout(() => {
           visualizeShortestPath(path);
-        }, 20 * i);
+        }, i * speed * 5);
       } else {
         setTimeout(() => {
           const node = visitedNodes[i];
           document.getElementById(
             `pathFinder-node-${node.row}-${node.col}`
           ).className = "pathFinder-node pathFinder-node-visited";
-        }, 20 * i);
+        }, i * speed * 5);
       }
     }
   };
@@ -183,7 +191,7 @@ const PathFinder = () => {
         document.getElementById(
           `pathFinder-node-${node.row}-${node.col}`
         ).className = "pathFinder-node pathFinder-node-shortest-path";
-      }, 50 * i);
+      }, i * speed * 5);
     }
   };
 
@@ -200,6 +208,7 @@ const PathFinder = () => {
     }
     setGrid(grid);
     const newGrid = mazeRecursive(grid, current, rows, cols);
+    setGrid(newGrid);
 
     setMaze((prev) => !prev);
   };
@@ -225,21 +234,57 @@ const PathFinder = () => {
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
 
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
-    // addNeighbors(grid);
+  };
 
-    // const out = Astar(grid, startNode, finishNode);
-    // const nodesInShortestPathOrder = out.path;
-    // const visitedNodesInOrder = out.visitedNodes;
-    // visualizePath(visitedNodesInOrder, nodesInShortestPathOrder);
+  const visualizeAStar = () => {
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+
+    addNeighbors(grid);
+
+    const out = Astar(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = out.path;
+    const visitedNodesInOrder = out.visitedNodes;
+    visualizePath(visitedNodesInOrder, nodesInShortestPathOrder);
   };
 
   return (
     <div className="pathFinder">
-      <Navbar />
-      <button onClick={() => visualizeDijkstra()}>
+      <div className="pathFinder_top">
+        <div className="pathFinder_top_left">
+          <span className="pathFinder_top_left_header">PATHFINDER</span>
+        </div>
+        <div className="pathFinder_top_right">
+          <div className="pathFinder_top_right_item margin_right_2">
+            <button
+              className="pathFinder_top_right_item_button fill_button"
+              onClick={() => visualizeAStar()}
+            >
+              Visualize A*
+            </button>
+          </div>
+          <div className="pathFinder_top_right_item margin_right_2">
+            <button
+              className="pathFinder_top_right_item_button fill_button"
+              onClick={() => visualizeDijkstra()}
+            >
+              Visualize Dijkstra's
+            </button>
+          </div>
+          <div className="pathFinder_top_right_item">
+            <button
+              className="pathFinder_top_right_item_button"
+              onClick={() => createMaze()}
+            >
+              Clear Grid
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* <button onClick={() => visualizeDijkstra()}>
         Visualize Dijkstra's Algorithm
       </button>
-      <button onClick={() => createMaze()}>Create Maze</button>
+      <button onClick={() => createMaze()}>Create Maze</button> */}
       <div className="pathFinder-grid">
         {grid.map((row, rowIdx) => {
           return (
@@ -274,6 +319,49 @@ const PathFinder = () => {
             </div>
           );
         })}
+      </div>
+
+      <div className="pathFinder_bottom">
+        <div className="pathFinder_bottom_item">
+          <img
+            className="pathFinder_bottom_item_speedIcon"
+            src={slowestTurtle}
+            alt=""
+            onClick={() => {
+              setSpeed(4);
+            }}
+          />
+        </div>
+        <div className="pathFinder_bottom_item">
+          <img
+            className="pathFinder_bottom_item_speedIcon"
+            src={slowTurtle}
+            alt=""
+            onClick={() => {
+              setSpeed(3);
+            }}
+          />
+        </div>
+        <div className="pathFinder_bottom_item">
+          <img
+            className="pathFinder_bottom_item_speedIcon"
+            src={slowRabbit}
+            onClick={() => {
+              setSpeed(1.5);
+            }}
+            alt=""
+          />
+        </div>
+        <div className="pathFinder_bottom_item">
+          <img
+            className="pathFinder_bottom_item_speedIcon"
+            src={fastRabbit}
+            alt=""
+            onClick={() => {
+              setSpeed(1);
+            }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,15 @@
+.pathFinderPage {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-image: url("../../../assets/images/Bg_individual.png");
+  background-position: center;
+  background-size: cover;
+}
+.pathFinderPage_left {
+  flex: 0.08;
+  background-color: red;
+}
+.pathFinderPage_right {
+  flex: 0.98;
+}
