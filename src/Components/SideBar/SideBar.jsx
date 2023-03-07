@@ -30,6 +30,15 @@ const SideBar = ({ active }) => {
           />
         </Link>
       </div>
+      <div className="sidebar_items">
+        <Link to="/tower-of-hanoi">
+          <img
+            className="sideBar_images_img"
+            src={`${active ? sudukoIcon : sudukoIconActive} `}
+            alt=""
+          />
+        </Link>
+      </div>
     </div>
   );
 };

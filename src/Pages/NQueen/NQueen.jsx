@@ -133,46 +133,6 @@ const NQueen = () => {
             </div>
           </div>
         </div>
-        {/* <div className="nqueen_div_top">
-            <div className="nqueen_div_top_item margin-right-2">
-              <p>Animation Delay:</p>
-              <Slider
-                aria-label="Visualization Speed"
-                valueLabelDisplay="auto"
-                step={1}
-                marks
-                min={MIN_SPEED}
-                max={MAX_SPEED}
-                value={parseInt(speed)}
-                onChange={onSpeedChange}
-                onBlur={onSpeedChange}
-                onClick={onSpeedChange}
-                sx={{
-                  width: "250px",
-                  color: "black",
-                }}
-              />
-            </div>
-            <div className="nqueen_div_top_item">
-              <p>Grid Size:</p>
-              <Slider
-                aria-label="Visualization Speed"
-                valueLabelDisplay="auto"
-                step={1}
-                marks
-                min={MIN_GRID_SIZE}
-                max={MAX_GRID_SIZE}
-                value={parseInt(gridSize)}
-                onChange={changeGridSize}
-                onBlur={changeGridSize}
-                onClick={changeGridSize}
-                sx={{
-                  width: "250px",
-                  color: "black",
-                }}
-              />
-            </div>
-          </div> */}
 
         <div className="nqueen_right_body">
           <div className="nqueen_right_body_left">

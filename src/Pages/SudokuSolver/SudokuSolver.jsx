@@ -110,130 +110,206 @@ function SudokuSolver() {
         <SideBar />
       </div>
       <div className="sudukuSolver_right">
-        {grid.map((row, i) => (
-          <Grid item key={i} className="row" width="fit-content">
-            {row.map((cell, j) => (
-              <input
-                className="number-input"
-                key={j}
-                value={cell}
-                type="number"
+        <div className="sudukuSolver_right_top">
+          <div className="sudukuSolver_right_top_left">
+            <span className="sudukuSolver_right_top_left_header">
+              Suduku Solver
+            </span>
+          </div>
+          <div className="sudukuSolver_right_top_right">
+            <div className="sudukuSolver_right_top_right_item margin_right_2">
+              <button
+                className="sudukuSolver_right_top_right_item_button fill_button"
                 disabled={visualize}
-                onChange={(e) => {
-                  if (e.target.value === "") {
-                    const newGrid = grid.slice();
-                    newGrid[i][j] = "";
-                    return setGrid(newGrid);
-                  }
+                onClick={() => {
+                  if (!isValidSudoku()) return alert("Invalid Sudoku");
 
-                  const num = parseInt(e.target.value);
-                  if (num < 1 || num > 9) return;
-
-                  const newGrid = grid.slice();
-                  newGrid[i][j] = num;
-                  setGrid(newGrid);
+                  setVisualize(true);
+                  solve();
+                  visualizeSolve();
                 }}
-              />
+              >
+                Visualize
+              </button>
+            </div>
+            <div className="sudukuSolver_right_top_right_item margin_right_2">
+              <button
+                className="sudukuSolver_right_top_right_item_button fill_button"
+                disabled={visualize}
+                onClick={() => {
+                  if (!isValidSudoku()) return alert("Invalid Sudoku");
+                  solve();
+                }}
+              >
+                Solve
+              </button>
+            </div>
+            <div className="sudukuSolver_right_top_right_item">
+              <button
+                className="sudukuSolver_right_top_right_item_button"
+                onClick={() => navigate(0)}
+              >
+                Clear Board
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="sudukuSolver_right_body">
+          <div className="sudukuSolver_right_body_left">
+            {grid.map((row, i) => (
+              <Grid item key={i} className="row" width="fit-content">
+                {row.map((cell, j) => (
+                  <input
+                    className="number-input"
+                    key={j}
+                    value={cell}
+                    type="number"
+                    disabled={visualize}
+                    onChange={(e) => {
+                      if (e.target.value === "") {
+                        const newGrid = grid.slice();
+                        newGrid[i][j] = "";
+                        return setGrid(newGrid);
+                      }
+
+                      const num = parseInt(e.target.value);
+                      if (num < 1 || num > 9) return;
+
+                      const newGrid = grid.slice();
+                      newGrid[i][j] = num;
+                      setGrid(newGrid);
+                    }}
+                  />
+                ))}
+              </Grid>
             ))}
-          </Grid>
-        ))}
+          </div>
+          <div className="sudukuSolver_right_body_right">
+            <div className="nqueen_right_body_right_top">
+              <span className="nqueen_right_body_right__top_header">
+                DESCRIPTION
+              </span>
+            </div>
+            <div className="nqueen_right_body_right_bottom">
+              <p className="nqueen_right_body_right_bottom_para">
+                A Sudoku solver is a program or algorithm that solves Sudoku
+                puzzles, which are logic-based number-placement games. The goal
+                of Sudoku is to fill a 9x9 grid with digits so that each column,
+                each row, and each of the nine 3x3 subgrids contains all of the
+                digits from 1 to 9 without any duplicates. A Sudoku solver uses
+                various techniques to fill in the grid, such as scanning the
+                rows and columns to eliminate possibilities, using logical
+                deductions to narrow down the possible values in each cell, and
+                trying out different possibilities and backtracking when
+                necessary. There are many different algorithms and techniques
+                that can be used to solve Sudoku puzzles, ranging from simple
+                brute-force methods to more complex strategies that involve
+                advanced logic and reasoning. Some Sudoku solvers are designed
+                to be highly efficient and can solve even the most difficult
+                puzzles in a matter of seconds, while others may take longer or
+                require more computational resources.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 
-  //   return (
-  //     <Grid
-  //       container
-  //       spacing={2}
-  //       align="center"
-  //       alignItems="center"
-  //       justifyContent="center"
-  //       minHeight="100vh"
-  //     >
-  //       <Card
-  //         sx={{
-  //           p: 3,
-  //           boxShadow: 3,
-  //           borderRadius: 1,
-  //           width: "fit-content",
-  //         }}
-  //       >
-  //         <Grid item>
-  //           <Typography
-  //             variant="h5"
-  //             sx={{
-  //               marginBottom: ".5rem",
-  //               color: "white",
-  //               backgroundColor: "black",
-  //               padding: "1rem",
-  //               borderRadius: "1rem",
-  //               width: "fit-content",
-  //             }}
-  //           >
-  //             Sudoku Solver
-  //           </Typography>
-  //         </Grid>
+  return (
+    <Grid
+      container
+      spacing={2}
+      align="center"
+      alignItems="center"
+      justifyContent="center"
+      minHeight="100vh"
+    >
+      <Card
+        sx={{
+          p: 3,
+          boxShadow: 3,
+          borderRadius: 1,
+          width: "fit-content",
+        }}
+      >
+        <Grid item>
+          <Typography
+            variant="h5"
+            sx={{
+              marginBottom: ".5rem",
+              color: "white",
+              backgroundColor: "black",
+              padding: "1rem",
+              borderRadius: "1rem",
+              width: "fit-content",
+            }}
+          >
+            Sudoku Solver
+          </Typography>
+        </Grid>
 
-  //         <Grid item gap={2} xs={12} justifyContent="center" marginTop="0.75rem">
-  //           <Button
-  //             variant="contained"
-  //             disabled={visualize}
-  //             sx={{
-  //               color: "white",
-  //               backgroundColor: "#101010",
-  //               marginRight: "1rem",
+        <Grid item gap={2} xs={12} justifyContent="center" marginTop="0.75rem">
+          <Button
+            variant="contained"
+            disabled={visualize}
+            sx={{
+              color: "white",
+              backgroundColor: "#101010",
+              marginRight: "1rem",
 
-  //               ":hover": {
-  //                 backgroundColor: "#101010",
-  //               },
-  //             }}
-  //             onClick={() => {
-  //               if (!isValidSudoku()) return alert("Invalid Sudoku");
-  //               solve();
-  //             }}
-  //           >
-  //             Solve
-  //           </Button>
-  //           <Button
-  //             variant="contained"
-  //             disabled={visualize}
-  //             sx={{
-  //               color: "white",
-  //               backgroundColor: "#101010",
-  //               marginRight: "1rem",
+              ":hover": {
+                backgroundColor: "#101010",
+              },
+            }}
+            onClick={() => {
+              if (!isValidSudoku()) return alert("Invalid Sudoku");
+              solve();
+            }}
+          >
+            Solve
+          </Button>
+          <Button
+            variant="contained"
+            disabled={visualize}
+            sx={{
+              color: "white",
+              backgroundColor: "#101010",
+              marginRight: "1rem",
 
-  //               ":hover": {
-  //                 backgroundColor: "#101010",
-  //               },
-  //             }}
-  //             onClick={() => {
-  //               if (!isValidSudoku()) return alert("Invalid Sudoku");
+              ":hover": {
+                backgroundColor: "#101010",
+              },
+            }}
+            onClick={() => {
+              if (!isValidSudoku()) return alert("Invalid Sudoku");
 
-  //               setVisualize(true);
-  //               solve();
-  //               visualizeSolve();
-  //             }}
-  //           >
-  //             Visualize
-  //           </Button>
-  //           <Button
-  //             variant="contained"
-  //             sx={{
-  //               color: "white",
-  //               backgroundColor: "#101010",
+              setVisualize(true);
+              solve();
+              visualizeSolve();
+            }}
+          >
+            Visualize
+          </Button>
+          <Button
+            variant="contained"
+            sx={{
+              color: "white",
+              backgroundColor: "#101010",
 
-  //               ":hover": {
-  //                 backgroundColor: "#101010",
-  //               },
-  //             }}
-  //             onClick={() => navigate(0)}
-  //           >
-  //             Reset
-  //           </Button>
-  //         </Grid>
-  //       </Card>
-  //     </Grid>
-  //   );
+              ":hover": {
+                backgroundColor: "#101010",
+              },
+            }}
+            onClick={() => navigate(0)}
+          >
+            Reset
+          </Button>
+        </Grid>
+      </Card>
+    </Grid>
+  );
 }
 
 export default SudokuSolver;

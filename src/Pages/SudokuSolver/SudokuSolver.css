@@ -1,6 +1,6 @@
 .number-input {
-  width: 35px;
-  height: 35px;
+  width: 5rem;
+  height: 5rem;
   text-align: center;
   font-size: 2rem;
 
@@ -8,7 +8,7 @@
     background-color: #212435;
     color: #b0b3bc; */
   border: 1px solid #595959;
-  background-color: #ffffff;
+  background-color: var(--grey);
   color: #363636;
   font-weight: 100;
 }
@@ -52,4 +52,68 @@
   background-position: center;
   background-size: cover;
   font-size: 1.6rem;
+}
+.sudukuSolver_left {
+  flex: 0.08;
+}
+.sudukuSolver_right {
+  flex: 0.98;
+}
+
+.sudukuSolver_right_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  /* width: 100%; */
+  padding: 0 2rem;
+  height: 6.5rem;
+}
+
+.sudukuSolver_right_top_left_header {
+  color: var(--grey);
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+}
+.sudukuSolver_right_top_right {
+  display: flex;
+}
+.margin_right_2 {
+  margin-right: 2rem;
+}
+.sudukuSolver_right_top_right_item_button {
+  /* height: 3.3rem; */
+  padding: 0.8rem 2rem;
+  border: 2px solid var(--grey);
+  color: var(--grey);
+  font-size: 1.6rem;
+  letter-spacing: 0.01rem;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.fill_button {
+  background-color: var(--grey);
+  color: black;
+}
+
+.sudukuSolver_right_body {
+  display: flex;
+  padding: 0 2rem;
+  margin-top: 5rem;
+}
+.sudukuSolver_right_body_left {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  /* background-color: red; */
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.sudukuSolver_right_body_right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
