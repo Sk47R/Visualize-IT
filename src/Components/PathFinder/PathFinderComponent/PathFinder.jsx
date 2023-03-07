@@ -10,7 +10,6 @@ import slowRabbit from "../../../assets/images/fluent_animal-rabbit-20-filled.pn
 import fastRabbit from "../../../assets/images/mdi_rabbit.png";
 
 import "./PathFinder.css";
-import Navbar from "../../Navbar/Navbar";
 
 import mazeJava from "../Algorithms/mazeJava";
 import mazeRecursive from "../Algorithms/mazeRecursive";
