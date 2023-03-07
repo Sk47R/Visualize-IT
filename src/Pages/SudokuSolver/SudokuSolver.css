@@ -41,3 +41,15 @@
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+.sudukuSolver {
+  width: 100%;
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-image: url("../../assets/images/Bg_individual.png");
+  background-position: center;
+  background-size: cover;
+  font-size: 1.6rem;
+}

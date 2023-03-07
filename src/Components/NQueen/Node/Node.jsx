@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Node.css";
+import queen from "../../../assets/images/queen.png";
 
 export default class Node extends Component {
   render() {
@@ -13,8 +14,8 @@ export default class Node extends Component {
     return (
       <div
         id={`${row}-${col}`}
-        className={`node ${isActive && "red"} ${
-          isActive && hasQueen && "green"
+        className={`node ${isActive && "queenNode_active"} ${
+          isActive && hasQueen && "queenNode_hasQueen"
         } ${black} ${white}`}
         style={{ width: `${nodeSize}rem`, height: `${nodeSize}rem` }}
       >
@@ -22,9 +23,9 @@ export default class Node extends Component {
           <img
             style={{
               width: `${queenImageSize}rem`,
-              height: `${queenImageSize}rem`,
+              height: `${queenImageSize}rem - 0rem`,
             }}
-            src="https://cdn.pixabay.com/photo/2013/07/12/16/57/chess-151548_1280.png"
+            src={queen}
           ></img>
         )}
       </div>

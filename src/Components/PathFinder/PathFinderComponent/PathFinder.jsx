@@ -10,7 +10,6 @@ import slowRabbit from "../../../assets/images/fluent_animal-rabbit-20-filled.pn
 import fastRabbit from "../../../assets/images/mdi_rabbit.png";
 
 import "./PathFinder.css";
-import Navbar from "../../Navbar/Navbar";
 
 import mazeJava from "../Algorithms/mazeJava";
 import mazeRecursive from "../Algorithms/mazeRecursive";
@@ -324,7 +323,9 @@ const PathFinder = () => {
       <div className="pathFinder_bottom">
         <div className="pathFinder_bottom_item">
           <img
-            className="pathFinder_bottom_item_speedIcon"
+            className={`pathFinder_bottom_item_speedIcon ${
+              speed == 4 && "pathFinder_bottom_item_speedIcon_active"
+            }`}
             src={slowestTurtle}
             alt=""
             onClick={() => {
@@ -334,7 +335,9 @@ const PathFinder = () => {
         </div>
         <div className="pathFinder_bottom_item">
           <img
-            className="pathFinder_bottom_item_speedIcon"
+            className={`pathFinder_bottom_item_speedIcon ${
+              speed == 3 && "pathFinder_bottom_item_speedIcon_active"
+            }`}
             src={slowTurtle}
             alt=""
             onClick={() => {
@@ -344,7 +347,9 @@ const PathFinder = () => {
         </div>
         <div className="pathFinder_bottom_item">
           <img
-            className="pathFinder_bottom_item_speedIcon"
+            className={`pathFinder_bottom_item_speedIcon ${
+              speed == 1.5 && "pathFinder_bottom_item_speedIcon_active"
+            }`}
             src={slowRabbit}
             onClick={() => {
               setSpeed(1.5);
@@ -354,7 +359,9 @@ const PathFinder = () => {
         </div>
         <div className="pathFinder_bottom_item">
           <img
-            className="pathFinder_bottom_item_speedIcon"
+            className={`pathFinder_bottom_item_speedIcon ${
+              speed == 1 && "pathFinder_bottom_item_speedIcon_active"
+            }`}
             src={fastRabbit}
             alt=""
             onClick={() => {

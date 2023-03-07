@@ -6,19 +6,19 @@
 }
 
 .black {
-  background-color: #a5672a;
+  background-color: #1d1e25;
 }
 .white {
-  background-color: #dfc990;
+  background-color: #eeeeee;
+}
+.queenNode_active {
+  background-color: rgb(121, 191, 228);
 }
 
-.red {
-  background-color: #c1db4cbf;
+.queenNode_hasQueen {
+  background-color: rgb(20, 26, 134);
 }
+
 .node-finish {
-  background-color: red;
-}
-
-.green {
-  background-color: green;
+  background-color: blue;
 }

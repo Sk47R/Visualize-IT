@@ -8,7 +8,6 @@
 }
 .pathFinderPage_left {
   flex: 0.08;
-  background-color: red;
 }
 .pathFinderPage_right {
   flex: 0.98;

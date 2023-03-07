@@ -5,6 +5,11 @@ import Slider from "@mui/material/Slider";
 
 import { useState, useEffect } from "react";
 import NQueenAlgo from "./Algorithm/NQueen";
+import SideBar from "../../Components/SideBar/SideBar";
+import slowTurtle from "../../assets/images/mdi_tortoise.png";
+import slowestTurtle from "../../assets/images/fluent_animal-turtle-24-filled.png";
+import slowRabbit from "../../assets/images/fluent_animal-rabbit-20-filled.png";
+import fastRabbit from "../../assets/images/mdi_rabbit.png";
 
 const DEFAULT_SPEED = 4;
 const MIN_SPEED = 1;
@@ -91,59 +96,201 @@ const NQueen = () => {
 
   return (
     <div className="nqueen">
-      <div className="nqueen_div">
+      <div className="nqueen_left">
+        <SideBar active={true} />
+      </div>
+      <div className="nqueen_right">
         <div className="nqueen_div_top">
-          <div className="nqueen_div_top_item margin-right-2">
-            <p>Animation Delay:</p>
-            <Slider
-              aria-label="Visualization Speed"
-              valueLabelDisplay="auto"
-              step={1}
-              marks
-              min={MIN_SPEED}
-              max={MAX_SPEED}
-              value={parseInt(speed)}
-              onChange={onSpeedChange}
-              onBlur={onSpeedChange}
-              onClick={onSpeedChange}
-              sx={{
-                width: "250px",
-                color: "black",
-              }}
-            />
+          <div className="nqueen_div_top_left">
+            <span className="nqueen_div_top_left_header">
+              NQueen's Visualization
+            </span>
           </div>
-          <div className="nqueen_div_top_item">
-            <p>Grid Size:</p>
-            <Slider
-              aria-label="Visualization Speed"
-              valueLabelDisplay="auto"
-              step={1}
-              marks
-              min={MIN_GRID_SIZE}
-              max={MAX_GRID_SIZE}
-              value={parseInt(gridSize)}
-              onChange={changeGridSize}
-              onBlur={changeGridSize}
-              onClick={changeGridSize}
-              sx={{
-                width: "250px",
-                color: "black",
-              }}
-            />
+          <div className="nqueen_div_top_right">
+            <div className="nqueen_div_top_right_item margin_right_2">
+              <button
+                className="nqueen_div_top_right_item_button fill_button"
+                onClick={visualizeNQeen}
+              >
+                Visualize
+              </button>
+            </div>
+            <div className="nqueen_div_top_right_item margin_right_2">
+              <button
+                className="nqueen_div_top_right_item_button fill_button"
+                onClick={solveNQueen}
+              >
+                Solve
+              </button>
+            </div>
+            <div className="nqueen_div_top_right_item">
+              <button
+                className="nqueen_div_top_right_item_button"
+                onClick={clearBoard}
+              >
+                Clear Board
+              </button>
+            </div>
           </div>
         </div>
+        {/* <div className="nqueen_div_top">
+            <div className="nqueen_div_top_item margin-right-2">
+              <p>Animation Delay:</p>
+              <Slider
+                aria-label="Visualization Speed"
+                valueLabelDisplay="auto"
+                step={1}
+                marks
+                min={MIN_SPEED}
+                max={MAX_SPEED}
+                value={parseInt(speed)}
+                onChange={onSpeedChange}
+                onBlur={onSpeedChange}
+                onClick={onSpeedChange}
+                sx={{
+                  width: "250px",
+                  color: "black",
+                }}
+              />
+            </div>
+            <div className="nqueen_div_top_item">
+              <p>Grid Size:</p>
+              <Slider
+                aria-label="Visualization Speed"
+                valueLabelDisplay="auto"
+                step={1}
+                marks
+                min={MIN_GRID_SIZE}
+                max={MAX_GRID_SIZE}
+                value={parseInt(gridSize)}
+                onChange={changeGridSize}
+                onBlur={changeGridSize}
+                onClick={changeGridSize}
+                sx={{
+                  width: "250px",
+                  color: "black",
+                }}
+              />
+            </div>
+          </div> */}
 
-        <Grid grid={grid} gridSize={gridSize} />
-
-        <button className="button" onClick={visualizeNQeen}>
-          Visualize NQueen
-        </button>
-        <button className="button" onClick={solveNQueen}>
-          Solve NQueen
-        </button>
-        <button className="button" onClick={clearBoard}>
-          Clear Board
-        </button>
+        <div className="nqueen_right_body">
+          <div className="nqueen_right_body_left">
+            <div className="nqueen_right_body_left_grid_left">
+              <Grid grid={grid} gridSize={gridSize} />
+              <div className="nqueen_right_body_left_grid_right">
+                <div
+                  className="nqueen_right_body_left_grid_right_item-1"
+                  onClick={() => {
+                    setGridSize(8);
+                  }}
+                ></div>
+                <div
+                  className="nqueen_right_body_left_grid_right_item-2"
+                  onClick={() => {
+                    setGridSize(7);
+                  }}
+                ></div>
+                <div
+                  className="nqueen_right_body_left_grid_right_item-3"
+                  onClick={() => {
+                    setGridSize(6);
+                  }}
+                ></div>
+                <div
+                  className="nqueen_right_body_left_grid_right_item-4"
+                  onClick={() => {
+                    setGridSize(5);
+                  }}
+                ></div>
+                <div
+                  className="nqueen_right_body_left_grid_right_item-5"
+                  onClick={() => {
+                    setGridSize(4);
+                  }}
+                ></div>
+              </div>
+            </div>
+            <div className="nqueen_right_body_left_bottom">
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    speed == 4 && "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={slowestTurtle}
+                  alt=""
+                  onClick={() => {
+                    setSpeed(4);
+                  }}
+                />
+              </div>
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    speed == 3 && "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={slowTurtle}
+                  alt=""
+                  onClick={() => {
+                    setSpeed(3);
+                  }}
+                />
+              </div>
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    speed == 1.5 && "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={slowRabbit}
+                  onClick={() => {
+                    setSpeed(1.5);
+                  }}
+                  alt=""
+                />
+              </div>
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    speed == 1 && "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={fastRabbit}
+                  alt=""
+                  onClick={() => {
+                    setSpeed(1);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="nqueen_right_body_right">
+            <div className="nqueen_right_body_right_top">
+              <span className="nqueen_right_body_right__top_header">
+                DESCRIPTION
+              </span>
+            </div>
+            <div className="nqueen_right_body_right_bottom">
+              <p className="nqueen_right_body_right_bottom_para">
+                The N-Queens problem is a classic puzzle that involves placing N
+                chess queens on an N×N chessboard such that no two queens
+                threaten each other. This means that no two queens can be placed
+                on the same row, column, or diagonal. For example, in the case
+                of the 8-Queens problem, we need to place 8 queens on an 8x8
+                chessboard in such a way that no two queens share the same row,
+                column, or diagonal. The N-Queens problem is a well-known
+                problem in computer science, and has been studied extensively as
+                an example of a problem that can be solved using backtracking
+                algorithms. Backtracking algorithms are a type of algorithm that
+                can be used to solve problems where the solution involves making
+                a series of choices or decisions, each of which can lead to
+                several possible outcomes. The N-Queens problem is a challenging
+                problem, especially for larger values of N. However, there are
+                several algorithms that can be used to solve this problem
+                efficiently, including backtracking algorithms, genetic
+                algorithms, and others.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

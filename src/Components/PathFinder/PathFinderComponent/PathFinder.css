@@ -56,8 +56,23 @@
   margin-top: 2rem;
 }
 .pathFinder_bottom_item_speedIcon {
-  height: 6rem;
-  width: 6rem;
+  height: 4rem;
+  width: 4rem;
   margin-right: 2rem;
   cursor: pointer;
+  transition: 0.3s ease;
+  padding: 0.5rem;
+}
+.pathFinder_bottom_item_speedIcon:hover {
+  transform: scale(1.2);
+  border: 1px solid grey;
+  border-radius: 50%;
+}
+
+.pathFinder_bottom_item_speedIcon_active {
+  border: 1px solid grey;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

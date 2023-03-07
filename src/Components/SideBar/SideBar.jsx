@@ -3,6 +3,8 @@ import "./SideBar.css";
 import RouteIcon from "@mui/icons-material/Route";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import sudukoIcon from "../../assets/images/arcticons_sudoku.png";
+import sudukoIconActive from "../../assets/images/arcticons_sudoku_active.png";
 
 const SideBar = ({ active }) => {
   return (
@@ -17,6 +19,15 @@ const SideBar = ({ active }) => {
       <div className="sidebar_items">
         <Link to="/nqueens">
           <Icon icon="mdi:chess-queen" className="sideBar_images" />
+        </Link>
+      </div>
+      <div className="sidebar_items">
+        <Link to="/sudoku-solver">
+          <img
+            className="sideBar_images_img"
+            src={`${active ? sudukoIcon : sudukoIconActive} `}
+            alt=""
+          />
         </Link>
       </div>
     </div>
