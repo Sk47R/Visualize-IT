@@ -97,7 +97,7 @@ const NQueen = () => {
   return (
     <div className="nqueen">
       <div className="nqueen_left">
-        <SideBar active={true} />
+        <SideBar />
       </div>
       <div className="nqueen_right">
         <div className="nqueen_div_top">

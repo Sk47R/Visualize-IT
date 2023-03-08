@@ -8,7 +8,7 @@ const PathFinderPage = () => {
   return (
     <div className="pathFinderPage">
       <div className="pathFinderPage_left">
-        <SideBar active={true} />
+        <SideBar />
       </div>
       <div className="pathFinderPage_right">
         <PathFinder />
