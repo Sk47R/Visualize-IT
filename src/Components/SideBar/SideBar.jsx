@@ -2,10 +2,12 @@ import "./SideBar.css";
 import sudukoIcon from "../../assets/images/arcticons_sudoku.png";
 import sudukoIconActive from "../../assets/images/arcticons_sudoku_active.png";
 
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import HomeIcon from "@mui/icons-material/Home";
+import RouteIcon from "@mui/icons-material/Route";
+
+import { Link, useLocation } from "react-router-dom";
+import React from "react";
 
 const SideBar = () => {
   const location = useLocation();
@@ -20,8 +22,7 @@ const SideBar = () => {
 
       <div className="sidebar_items margin_bottom_4">
         <Link to="/path-finder">
-          <Icon
-            icon="material-symbols:route"
+          <RouteIcon
             className={`sideBar_images ${
               location.pathname === "/path-finder" && "sideBar_images_active"
             }`}
