@@ -7,6 +7,11 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Slider from "@mui/material/Slider";
+import SideBar from "../../Components/SideBar/SideBar";
+import slowTurtle from "../../assets/images/mdi_tortoise.png";
+import slowestTurtle from "../../assets/images/fluent_animal-turtle-24-filled.png";
+import slowRabbit from "../../assets/images/fluent_animal-rabbit-20-filled.png";
+import fastRabbit from "../../assets/images/mdi_rabbit.png";
 
 import { useState, useEffect } from "react";
 
@@ -116,7 +121,7 @@ function TowerOfHanoi() {
     if (e.target.value > MAX_RING_COUNT) {
       e.target.value = MAX_RING_COUNT;
     }
-
+    console.log("first");
     setDiskCount(e.target.value);
     resetTowers();
   };
@@ -124,6 +129,121 @@ function TowerOfHanoi() {
   const onSpeedChange = (e) => {
     e.target.value && setSpeed(e.target.value);
   };
+
+  return (
+    <div className="toh">
+      <div className="toh_left">
+        <SideBar active="toh" />
+      </div>
+      <div className="toh_right">
+        <div className="sudukuSolver_right_top">
+          <div className="sudukuSolver_right_top_left">
+            <span className="sudukuSolver_right_top_left_header">
+              Tower of Hanoi
+            </span>
+          </div>
+          <div className="sudukuSolver_right_top_right">
+            <div className="sudukuSolver_right_top_right_item margin_right_2">
+              <button
+                className="sudukuSolver_right_top_right_item_button fill_button"
+                onClick={() => solveHanoi(tower0.length)}
+              >
+                Solve
+              </button>
+            </div>
+            <div className="sudukuSolver_right_top_right_item">
+              <button
+                className="sudukuSolver_right_top_right_item_button"
+                onClick={reset}
+              >
+                Reset{" "}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="toh_right_body">
+          <div className="tower-container">
+            <Tower disks={tower0} />
+            <Tower disks={tower1} />
+            <Tower disks={tower2} />
+          </div>
+
+          <div className="toh_right_body_bottom">
+            <div className="toh_right_body_bottom_top">
+              <span className="toh_right_body_bottom_top_header">
+                No. of Disk
+              </span>
+              <Slider
+                marks
+                min={MIN_RING_COUNT}
+                max={MAX_RING_COUNT}
+                value={diskCount}
+                onChange={onDiskCountChange}
+                sx={{
+                  width: "250px",
+                  color: "#c0c0c0",
+                }}
+              />
+            </div>
+            <div className="toh_right_body_bottom_bottom">
+              <span className="toh_right_body_bottom_top_header">Speed</span>
+              <div className="toh_right_body_bottom_Down">
+                <div className="pathFinder_bottom_item">
+                  <img
+                    className={`pathFinder_bottom_item_speedIcon ${
+                      speed == 3 && "pathFinder_bottom_item_speedIcon_active"
+                    }`}
+                    src={slowestTurtle}
+                    alt=""
+                    onClick={() => {
+                      setSpeed(3);
+                    }}
+                  />
+                </div>
+                <div className="pathFinder_bottom_item">
+                  <img
+                    className={`pathFinder_bottom_item_speedIcon ${
+                      speed == 5 && "pathFinder_bottom_item_speedIcon_active"
+                    }`}
+                    src={slowTurtle}
+                    alt=""
+                    onClick={() => {
+                      setSpeed(5);
+                    }}
+                  />
+                </div>
+                <div className="pathFinder_bottom_item">
+                  <img
+                    className={`pathFinder_bottom_item_speedIcon ${
+                      speed == 7 && "pathFinder_bottom_item_speedIcon_active"
+                    }`}
+                    src={slowRabbit}
+                    onClick={() => {
+                      setSpeed(7);
+                    }}
+                    alt=""
+                  />
+                </div>
+                <div className="pathFinder_bottom_item">
+                  <img
+                    className={`pathFinder_bottom_item_speedIcon ${
+                      speed == 9 && "pathFinder_bottom_item_speedIcon_active"
+                    }`}
+                    src={fastRabbit}
+                    alt=""
+                    onClick={() => {
+                      setSpeed(9);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <Grid
@@ -157,12 +277,6 @@ function TowerOfHanoi() {
         >
           Tower of Hanoi
         </Typography>
-
-        <div className="tower-container">
-          <Tower disks={tower0} />
-          <Tower disks={tower1} />
-          <Tower disks={tower2} />
-        </div>
 
         <Typography sx={{ fontSize: "1.2rem", fontWeight: "bold" }}>
           Number of disks:{" "}

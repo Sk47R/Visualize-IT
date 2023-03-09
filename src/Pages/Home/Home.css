@@ -1,0 +1,26 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/images/Bg_homepage.png");
+  width: 100%;
+  flex-direction: column;
+}
+.home_header {
+  color: var(--grey);
+  font-size: 3.5rem;
+  letter-spacing: 0.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+.home_slider {
+  width: 42%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slide_image {
+  /* height: 600px; */
+  width: 100%;
+}

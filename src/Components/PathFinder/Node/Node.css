@@ -9,8 +9,12 @@
 }
 .node-icon {
   font-size: 4rem !important;
-  color: var(--golden-color);
+  color: black;
 }
+.grey {
+  background-color: var(--grey);
+}
+
 .pathFinder-node-finish {
   background-color: red;
 }
@@ -55,6 +59,8 @@
 }
 
 .pathFinder-node-wall {
+  background-color: #00a0ff;
+  background-color: #7d7d7d;
   background-color: #7f7171;
 }
 
@@ -72,16 +78,16 @@
 @keyframes shortestPath {
   0% {
     transform: scale(0.6);
-    background-color: rgb(234, 234, 176);
+    background-color: #ffd700;
   }
 
   50% {
     transform: scale(1.2);
-    background-color: rgb(234, 234, 176);
+    background-color: #ffd700;
   }
 
   100% {
     transform: scale(1);
-    background-color: rgb(234, 234, 176);
+    background-color: #ffd700;
   }
 }

@@ -27,6 +27,8 @@ const PathFinder = () => {
   const [grid, setGrid] = useState([]);
   const [speed, setSpeed] = useState(DEFAULT_SPEED);
   const [mouseIsPressed, setMouseIsPressed] = useState(false);
+  const [gridClear, setGridClear] = useState(false);
+  const [clearBoard, setClearBoard] = useState(false);
 
   const getInitialGrid = () => {
     const grid = [];
@@ -117,6 +119,7 @@ const PathFinder = () => {
     newGrid[row][col] = newNode;
     return newGrid;
   };
+
   useEffect(() => {
     const grid = getInitialGrid();
     setGrid(grid);
@@ -195,6 +198,7 @@ const PathFinder = () => {
   };
 
   const createMaze = (e) => {
+    clearGrid();
     const grid = getInitialGrid();
     let current = grid[0][0];
     for (let i = 0; i < rows; i++) {
@@ -247,6 +251,12 @@ const PathFinder = () => {
     visualizePath(visitedNodesInOrder, nodesInShortestPathOrder);
   };
 
+  const clearGrid = () => {
+    const grid = getInitialGrid();
+    setGrid(grid);
+    setClearBoard(true);
+  };
+
   return (
     <div className="pathFinder">
       <div className="pathFinder_top">
@@ -270,10 +280,18 @@ const PathFinder = () => {
               Visualize Dijkstra's
             </button>
           </div>
+          <div className="pathFinder_top_right_item margin_right_2">
+            <button
+              className="pathFinder_top_right_item_button fill_button"
+              onClick={() => createMaze()}
+            >
+              Create Maze
+            </button>
+          </div>
           <div className="pathFinder_top_right_item">
             <button
               className="pathFinder_top_right_item_button"
-              onClick={() => createMaze()}
+              onClick={() => clearGrid()}
             >
               Clear Grid
             </button>
@@ -300,6 +318,7 @@ const PathFinder = () => {
                 } = node;
                 return (
                   <Node
+                    clearBoard={clearBoard}
                     key={nodeIdx}
                     col={col}
                     isFinish={isEnd}

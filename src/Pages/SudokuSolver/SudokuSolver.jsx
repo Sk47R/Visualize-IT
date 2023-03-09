@@ -107,7 +107,7 @@ function SudokuSolver() {
   return (
     <div className="sudukuSolver">
       <div className="sudukuSolver_left">
-        <SideBar />
+        <SideBar active="sudoku" />
       </div>
       <div className="sudukuSolver_right">
         <div className="sudukuSolver_right_top">

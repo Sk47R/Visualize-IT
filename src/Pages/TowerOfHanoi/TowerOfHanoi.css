@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
 }
 
 .Tower {
   margin: 0 35px;
   height: 300px;
   width: 200px;
+
   display: flex;
   justify-content: center;
   position: relative;
@@ -24,15 +26,18 @@
 }
 
 .Disk {
-  width: 140px;
+  width: 120px;
   height: 20px;
-  background-color: #4f351f;
+  background-color: var(--ash);
   margin-top: 3px;
   color: #fafafa;
   font-size: 18px;
   font-weight: 100;
-  border: 3px solid #331001;
+  border: 3px solid var(--ash);
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tower-bg {
@@ -42,13 +47,60 @@
 .tower-pillar {
   width: 20px;
   height: 220px;
-  background-color: #cf7b3b;
+  background-color: var(--grey);
   margin: 0 auto;
 }
 
 .tower-base {
-  width: 240px;
+  width: 220px;
   height: 15px;
-  background-color: #cf7b3b;
+  background-color: var(--grey);
   margin: 0 auto;
+}
+.toh {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-image: url("../../assets/images/Bg_individual.png");
+  background-position: center;
+  background-size: cover;
+  font-size: 1.6rem;
+}
+.toh_left {
+  flex: 0.08;
+}
+
+.toh_right {
+  flex: 0.99;
+}
+.toh_right_body {
+  margin-top: 12rem;
+  display: flex;
+  padding: 0 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.toh_right_body_bottom_top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--grey);
+}
+.toh_right_body_bottom_top_header {
+  margin-bottom: 1rem;
+  font-size: 2.3rem;
+  color: var(--grey);
+}
+.toh_right_body_bottom_Down {
+  display: flex;
+}
+.toh_right_body_bottom_bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3rem;
 }

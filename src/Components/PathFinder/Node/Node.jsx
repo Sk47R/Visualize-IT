@@ -14,22 +14,34 @@ export default class Node extends Component {
       onMouseEnter,
       onMouseUp,
       row,
+      clearBoard,
       isCurrent,
       isMazeVisited,
     } = this.props;
     const extraClassName =
       isWall && !isStart && !isFinish ? "pathFinder-node-wall" : "";
 
+    const additionalNodeColor = (isStart || isFinish) && "grey";
+
     const startArrowClickHandler = () => {
       console.log("first");
     };
+
+    clearBoard &&
+      document
+        .getElementById(`pathFinder-node-${row}-${col}`)
+        .classList.remove("pathFinder-node-visited");
+    clearBoard &&
+      document
+        .getElementById(`pathFinder-node-${row}-${col}`)
+        .classList.remove("pathFinder-node-shortest-path");
 
     const mazeClass = "";
 
     return (
       <div
         id={`pathFinder-node-${row}-${col}`}
-        className={`pathFinder-node ${extraClassName} ${mazeClass}`}
+        className={`pathFinder-node ${extraClassName} ${mazeClass} ${additionalNodeColor}`}
         onMouseDown={() => onMouseDown(row, col)}
         onMouseEnter={() => onMouseEnter(row, col)}
         onMouseUp={() => onMouseUp()}

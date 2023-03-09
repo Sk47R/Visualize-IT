@@ -1,91 +1,58 @@
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-
 import React from "react";
+import Carousel from "react-bootstrap/Carousel";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Home.css";
+import bg from "../../assets/images/Bg_individual.png";
+import toh from "../../assets/images/toh_home.gif";
+import suduku_home from "../../assets/images/suduku_home.png";
+import chess_home from "../../assets/images/chess_home.png";
+import pathFinder_home from "../../assets/images/pathFinder_home.png";
 import { Link } from "react-router-dom";
-
 const Home = () => {
-  const links = [
-    {
-      name: "N-Queens",
-      route: "/nqueens",
-    },
-    {
-      name: "Path finder",
-      route: "/path-finder",
-    },
-    {
-      name: "Sudoku solver",
-      route: "/sudoku-solver",
-    },
-    {
-      name: "Tower of Hanoi",
-      route: "/tower-of-hanoi",
-    },
-  ];
-
   return (
-    <Box
-      sx={{
-        width: 300,
-        marginTop: "5%",
-        marginX: "auto",
-        padding: "1.2rem",
-        height: "fit-content",
-        borderRadius: "10px",
-        boxShadow: 3,
-
-        bgcolor: "#2E3840",
-        color: "primary.contrastText",
-
-        display: "grid",
-        alignItems: "center",
-        justifyItems: "center",
-      }}
-    >
-      <Typography
-        variant="h5"
-        sx={{
-          marginTop: "1rem",
-        }}
-      >
-        Visualize
-      </Typography>
-
-      <List sx={{ width: "100%" }}>
-        {links.map((link, index) => (
-          <div>
-            <ListItem
-              key={index}
-              component={Link}
-              to={link.route}
-              sx={{
-                bgcolor: "#2E3840",
-                color: "primary.contrastText",
-                fontWeight: "bold",
-                fontSize: "1.2rem",
-                "&:hover": {
-                  backgroundColor: "#2E3840",
-                  color: "primary.contrastText",
-                },
-              }}
-            >
-              <ListItemText primary={link.name} />
-            </ListItem>
-            <Divider
-              sx={{
-                borderBottomWidth: 2,
-                borderColor: "#fafafa",
-              }}
-            />
-          </div>
-        ))}
-      </List>
-    </Box>
+    <div className="home">
+      <span className="home_header">VISUALIZE-IT</span>
+      <div className="home_slider">
+        <Carousel>
+          <Carousel.Item>
+            <Link to="/sudoku-solver">
+              <img
+                className="d-block w-100 slide_image"
+                src={suduku_home}
+                alt="First slide"
+              />
+            </Link>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Link to="/nqueens">
+              <img
+                className="d-block w-100 slide_image"
+                src={chess_home}
+                alt="Second slide"
+              />
+            </Link>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Link to="/path-finder">
+              <img
+                className="d-block w-100 slide_image"
+                src={pathFinder_home}
+                alt="Third slide"
+              />
+            </Link>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Link to="/tower-of-hanoi">
+              <img
+                className="d-block w-100 slide_image"
+                src={pathFinder_home}
+                alt="Third slide"
+              />
+            </Link>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+    </div>
   );
 };
 
