@@ -1,15 +1,19 @@
-import React from "react";
 import "./SideBar.css";
-import RouteIcon from "@mui/icons-material/Route";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react";
 import sudukoIcon from "../../assets/images/arcticons_sudoku.png";
-import HomeIcon from "@mui/icons-material/Home";
 import sudukoIconActive from "../../assets/images/arcticons_sudoku_active.png";
 import toh from "../../assets/images/toh-active.png";
 import tohNormal from "../../assets/images/toh-normal.png";
 
+import { Icon } from "@iconify/react";
+import HomeIcon from "@mui/icons-material/Home";
+import RouteIcon from "@mui/icons-material/Route";
+
+import { Link, useLocation } from "react-router-dom";
+import React from "react";
+
 const SideBar = ({ active }) => {
+  const location = useLocation();
+
   return (
     <div className="sidebar">
       <div className="sidebar_items margin_bottom_4">
@@ -26,6 +30,7 @@ const SideBar = ({ active }) => {
           />
         </Link>
       </div>
+
       <div className="sidebar_items">
         <Link to="/nqueens">
           <Icon
@@ -36,7 +41,8 @@ const SideBar = ({ active }) => {
           />
         </Link>
       </div>
-      <div className="sidebar_items">
+
+      <div className="sidebar_items margin_bottom_4">
         <Link to="/sudoku-solver">
           <img
             className="sideBar_images_img"
@@ -45,7 +51,8 @@ const SideBar = ({ active }) => {
           />
         </Link>
       </div>
-      <div className="sidebar_items">
+
+      <div className="sidebar_items margin_bottom_4">
         <Link to="/tower-of-hanoi">
           <img
             className="sideBar_images_img"

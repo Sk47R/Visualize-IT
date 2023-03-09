@@ -1,7 +1,5 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
-import SideNavbar from "../Components/SideNavbar/SideNavbar";
-
 import Home from "../Pages/Home/Home";
 import NQueen from "../Pages/NQueen/NQueen";
 import PathFinderPage from "../Pages/PathFinder/PathFinderPage/PathFinderPage";
@@ -13,7 +11,6 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <>
-        <SideNavbar />
         <Outlet />
         {/* <Footer /> */}
       </>
