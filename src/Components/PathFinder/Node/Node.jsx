@@ -27,21 +27,16 @@ export default class Node extends Component {
       console.log("first");
     };
 
-    clearBoard &&
-      document
-        .getElementById(`pathFinder-node-${row}-${col}`)
-        .classList.remove("pathFinder-node-visited");
-    clearBoard &&
-      document
-        .getElementById(`pathFinder-node-${row}-${col}`)
-        .classList.remove("pathFinder-node-shortest-path");
-
-    const mazeClass = "";
+    if (clearBoard) {
+      document.getElementById(
+        `pathFinder-node-${row}-${col}`
+      ).className = `pathFinder-node ${additionalNodeColor}`;
+    }
 
     return (
       <div
         id={`pathFinder-node-${row}-${col}`}
-        className={`pathFinder-node ${extraClassName} ${mazeClass} ${additionalNodeColor}`}
+        className={`pathFinder-node ${extraClassName} ${additionalNodeColor}`}
         onMouseDown={() => onMouseDown(row, col)}
         onMouseEnter={() => onMouseEnter(row, col)}
         onMouseUp={() => onMouseUp()}
