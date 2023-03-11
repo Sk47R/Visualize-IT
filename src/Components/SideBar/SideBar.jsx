@@ -45,6 +45,10 @@ const SideBar = ({ active }) => {
           <img
             className="sideBar_images_img"
             src={`${active == "sudoku" ? sudukoIconActive : sudukoIcon} `}
+            onMouseOver={(e) => (e.target.src = sudukoIconActive)}
+            onMouseOut={(e) => {
+              if (active !== "sudoku") e.target.src = sudukoIcon;
+            }}
             alt=""
           />
         </Link>
@@ -54,9 +58,7 @@ const SideBar = ({ active }) => {
         <Link to="/tower-of-hanoi">
           <Icon
             icon="icon-park-outline:tower-of-babel"
-            className={`sideBar_images ${
-              active == "toh" && "sideBar_active"
-            }`}
+            className={`sideBar_images ${active == "toh" && "sideBar_active"}`}
           />
         </Link>
       </div>

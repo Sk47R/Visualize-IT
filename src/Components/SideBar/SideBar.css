@@ -7,13 +7,18 @@
   align-items: center;
   flex-direction: column;
 }
+
 .sideBar_images {
   color: var(--sidebarIcon);
   font-size: 7rem !important;
 }
+.sideBar_images:hover {
+  color: var(--sidebarIcon-hover);
+}
 .sideBar_active {
   color: var(--sidebarIcon-hover);
 }
+
 .sideBar_images_img {
   height: 7rem;
   margin-top: 4rem;
@@ -21,9 +26,4 @@
 
 .margin_bottom_4 {
   margin-bottom: 4rem;
-}
-
-.suduko {
-  -webkit-mask: url("../../assets/images/arcticons_sudoku.png") no-repeat center;
-  mask: url("../../assets/images/arcticons_sudoku.png") no-repeat center;
 }
