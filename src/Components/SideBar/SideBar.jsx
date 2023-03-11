@@ -1,8 +1,6 @@
 import "./SideBar.css";
 import sudukoIcon from "../../assets/images/arcticons_sudoku.png";
 import sudukoIconActive from "../../assets/images/arcticons_sudoku_active.png";
-import toh from "../../assets/images/toh-active.png";
-import tohNormal from "../../assets/images/toh-normal.png";
 
 import { Icon } from "@iconify/react";
 import HomeIcon from "@mui/icons-material/Home";
@@ -54,10 +52,11 @@ const SideBar = ({ active }) => {
 
       <div className="sidebar_items margin_bottom_4">
         <Link to="/tower-of-hanoi">
-          <img
-            className="sideBar_images_img"
-            src={`${active == "toh" ? toh : tohNormal} `}
-            alt=""
+          <Icon
+            icon="icon-park-outline:tower-of-babel"
+            className={`sideBar_images ${
+              active == "toh" && "sideBar_active"
+            }`}
           />
         </Link>
       </div>
