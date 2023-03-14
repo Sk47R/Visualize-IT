@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="home">
-      <span className="home_header">VISUALIZE-IT</span>
+      <span className="home_header">VisualizeIT</span>
       <div className="home_slider">
         <Carousel interval={3000}>
           <Carousel.Item>
