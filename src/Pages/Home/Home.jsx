@@ -13,7 +13,7 @@ const Home = () => {
     <div className="home">
       <span className="home_header">VISUALIZE-IT</span>
       <div className="home_slider">
-        <Carousel>
+        <Carousel interval={3000}>
           <Carousel.Item>
             <Link to="/sudoku-solver">
               <img
