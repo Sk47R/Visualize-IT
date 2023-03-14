@@ -30,7 +30,7 @@ export default class Node extends Component {
     if (clearBoard) {
       document.getElementById(
         `pathFinder-node-${row}-${col}`
-      ).className = `pathFinder-node ${additionalNodeColor}`;
+      ).className = `pathFinder-node ${extraClassName} ${additionalNodeColor}`;
     }
 
     return (
