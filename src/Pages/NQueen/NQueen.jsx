@@ -47,6 +47,8 @@ const NQueen = () => {
   };
 
   useEffect(() => {
+    document.title = "N-Queens";
+    
     const initialGrid = getInitialGrid();
     setGrid(initialGrid);
     setSolution(null);

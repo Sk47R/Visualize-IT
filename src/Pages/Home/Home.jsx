@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
@@ -9,6 +9,10 @@ import pathFinder_home from "../../assets/images/pathFinder_home.png";
 import toh_home from "../../assets/images/toh_home.png";
 import { Link } from "react-router-dom";
 const Home = () => {
+  useEffect(() => {
+    document.title = "VisualizeIT";
+  }, []);
+
   return (
     <div className="home">
       <span className="home_header">VisualizeIT</span>
