@@ -105,7 +105,7 @@ const NQueen = () => {
         <div className="nqueen_div_top">
           <div className="nqueen_div_top_left">
             <span className="nqueen_div_top_left_header">
-              NQueen's Visualization
+              N-Queens
             </span>
           </div>
           <div className="nqueen_div_top_right">
