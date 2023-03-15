@@ -2,10 +2,6 @@ import "./TowerOfHanoi.css";
 
 import Tower from "./components/Tower";
 
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Slider from "@mui/material/Slider";
 import SideBar from "../../Components/SideBar/SideBar";
 import slowTurtle from "../../assets/images/mdi_tortoise.png";
@@ -20,8 +16,6 @@ const MIN_RING_COUNT = 2;
 const MAX_RING_COUNT = 7;
 
 const DEFAULT_SPEED = 3;
-const MIN_SPEED = 1;
-const MAX_SPEED = 10;
 
 let timers = [];
 
@@ -124,10 +118,6 @@ function TowerOfHanoi() {
     console.log("first");
     setDiskCount(e.target.value);
     resetTowers();
-  };
-
-  const onSpeedChange = (e) => {
-    e.target.value && setSpeed(e.target.value);
   };
 
   return (
@@ -243,131 +233,6 @@ function TowerOfHanoi() {
         </div>
       </div>
     </div>
-  );
-
-  return (
-    <Grid
-      container
-      spacing={2}
-      align="center"
-      alignItems="center"
-      justifyContent="center"
-      minHeight="100vh"
-    >
-      <Card
-        sx={{
-          p: 3,
-          boxShadow: 3,
-          borderRadius: 1,
-          textAlign: "center",
-          width: "850px",
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: "1.6rem",
-            marginBottom: 5,
-            marginX: "auto",
-            color: "white",
-            backgroundColor: "black",
-            borderRadius: "1rem",
-            padding: "1rem",
-            width: "fit-content",
-          }}
-        >
-          Tower of Hanoi
-        </Typography>
-
-        <Typography sx={{ fontSize: "1.2rem", fontWeight: "bold" }}>
-          Number of disks:{" "}
-          <input
-            type="number"
-            min={MIN_RING_COUNT}
-            max={MAX_RING_COUNT}
-            value={diskCount}
-            onChange={onDiskCountChange}
-            onBlur={onDiskCountChange}
-            onClick={onDiskCountChange}
-            style={{
-              width: "45px",
-              fontSize: "1.2rem",
-              padding: "0.1rem",
-              marginBottom: "0.5rem",
-              borderRadius: "0.3rem",
-              textAlign: "center",
-            }}
-          />
-        </Typography>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: "1.2rem",
-              fontWeight: "bold",
-              marginRight: "1rem",
-              marginBottom: "1rem",
-            }}
-          >
-            Speed:{" "}
-          </Typography>
-
-          <Slider
-            aria-label="Visualization Speed"
-            valueLabelDisplay="auto"
-            step={1}
-            marks
-            min={MIN_SPEED}
-            max={MAX_SPEED}
-            value={parseInt(speed)}
-            onChange={onSpeedChange}
-            onBlur={onSpeedChange}
-            onClick={onSpeedChange}
-            sx={{
-              width: "250px",
-              color: "black",
-            }}
-          />
-        </div>
-
-        <div>
-          <Button
-            variant="contained"
-            sx={{
-              color: "white",
-              backgroundColor: "#101010",
-              marginRight: "0.5rem",
-
-              ":hover": {
-                backgroundColor: "#101010",
-              },
-            }}
-            onClick={() => solveHanoi(tower0.length)}
-          >
-            Solve
-          </Button>
-
-          <Button
-            variant="contained"
-            sx={{
-              color: "white",
-              backgroundColor: "#101010",
-
-              ":hover": {
-                backgroundColor: "#101010",
-              },
-            }}
-            onClick={reset}
-          >
-            Reset
-          </Button>
-        </div>
-      </Card>
-    </Grid>
   );
 }
 
