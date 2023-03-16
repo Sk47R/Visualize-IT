@@ -51,7 +51,7 @@ const NQueen = () => {
     setGrid(initialGrid);
     setSolution(null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [gridSize]);
 
   const solveNQueen = () => {
     if (!solution) {
