@@ -90,11 +90,11 @@ function SudokuSolver() {
         if (grid[row][col] === "") {
           for (let n = 1; n < 10; n++) {
             if (possible(row, col, n)) {
-              steps.push(grid.map((arr) => arr.slice()));
-
               const newGrid = grid.slice();
               newGrid[row][col] = n;
               setGrid(newGrid);
+
+              steps.push(grid.map((arr) => arr.slice()));
 
               if (solve()) return true;
 
@@ -155,6 +155,7 @@ function SudokuSolver() {
                   setVisualize(true);
                   solve();
                   visualizeSolve();
+                  setVisualize(false);
                 }}
               >
                 Visualize
