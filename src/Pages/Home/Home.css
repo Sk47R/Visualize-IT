@@ -2,7 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../assets/images/Bg_homepage.png");
+  background-image: url("../../assets/images/brain_bg_full.png");
+  background-position: center;
+  background-size: cover;
   width: 100%;
   flex-direction: column;
 }
@@ -23,4 +25,11 @@
 .slide_image {
   /* height: 600px; */
   width: 100%;
+}
+.slide_image:hover {
+}
+.pro_logo {
+  width: 280px;
+  margin-top: 3rem;
+  margin-bottom: -3rem;
 }

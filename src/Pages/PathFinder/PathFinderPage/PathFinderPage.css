@@ -12,3 +12,9 @@
 .pathFinderPage_right {
   flex: 0.98;
 }
+.pathFinder_top_left_header {
+  color: var(--grey);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+}

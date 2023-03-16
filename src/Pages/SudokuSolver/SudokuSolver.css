@@ -44,8 +44,7 @@
 
 .sudokuSolver {
   width: 100%;
-
-  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   background-image: url("../../assets/images/Bg_individual.png");
@@ -67,12 +66,13 @@
   flex-direction: row;
   /* width: 100%; */
   padding: 0 2rem;
-  height: 6.5rem;
+  height: 7.5rem;
 }
 
 .sudokuSolver_right_top_left_header {
   color: var(--grey);
-  font-size: 3rem;
+  font-size: 3.5rem;
+  font-weight: 700;
   letter-spacing: 0.2rem;
 }
 .sudokuSolver_right_top_right {
@@ -100,7 +100,9 @@
 .sudokuSolver_right_body {
   display: flex;
   padding: 0 2rem;
-  margin-top: 5rem;
+  justify-content: center;
+  align-items: center;
+  height: 88%;
 }
 .sudokuSolver_right_body_left {
   display: flex;
@@ -116,4 +118,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.nqueen_right_body_right_bottom_para {
+  letter-spacing: 0.09rem;
+  line-height: 2.8rem;
 }
