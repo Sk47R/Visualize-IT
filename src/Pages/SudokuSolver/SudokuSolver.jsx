@@ -8,6 +8,8 @@ import fastRabbit from "../../assets/images/mdi_rabbit.png";
 import Grid from "@mui/material/Grid";
 import SideBar from "../../Components/SideBar/SideBar";
 
+import { makepuzzle } from "sudoku";
+
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
@@ -29,6 +31,17 @@ function SudokuSolver() {
   const [steps] = useState([]);
   const [visualize, setVisualize] = useState(false);
   const [visualizeSpeed, setVisualizeSpeed] = useState(DEFAULT_SPEED);
+
+  const generateSudoku = () => {
+    const puzzle = makepuzzle();
+
+    const newGrid = grid.slice();
+    for (const [i, val] of puzzle.entries()) {
+      newGrid[i % 9][parseInt(i / 9)] = val ? val : "";
+    }
+
+    setGrid(newGrid);
+  };
 
   const possible = (row, col, n) => {
     for (let i = 0; i < 9; i++) {
@@ -120,7 +133,18 @@ function SudokuSolver() {
               Sudoku Solver
             </span>
           </div>
+
           <div className="sudokuSolver_right_top_right">
+            <div className="sudokuSolver_right_top_right_item margin_right_2">
+              <button
+                className="sudokuSolver_right_top_right_item_button fill_button"
+                disabled={visualize}
+                onClick={generateSudoku}
+              >
+                Generate
+              </button>
+            </div>
+
             <div className="sudokuSolver_right_top_right_item margin_right_2">
               <button
                 className="sudokuSolver_right_top_right_item_button fill_button"
@@ -136,6 +160,7 @@ function SudokuSolver() {
                 Visualize
               </button>
             </div>
+
             <div className="sudokuSolver_right_top_right_item margin_right_2">
               <button
                 className="sudokuSolver_right_top_right_item_button fill_button"
