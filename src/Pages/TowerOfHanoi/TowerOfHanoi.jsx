@@ -107,16 +107,8 @@ function TowerOfHanoi() {
     setSpeed(DEFAULT_SPEED);
   };
 
-  const onDiskCountChange = (e) => {
-    if (e.target.value < MIN_RING_COUNT) {
-      e.target.value = MIN_RING_COUNT;
-    }
-
-    if (e.target.value > MAX_RING_COUNT) {
-      e.target.value = MAX_RING_COUNT;
-    }
-    console.log("first");
-    setDiskCount(e.target.value);
+  const onDiskCountChange = (e, newValue) => {
+    setDiskCount(newValue);
     resetTowers();
   };
 
@@ -162,13 +154,17 @@ function TowerOfHanoi() {
           <div className="toh_right_body_bottom">
             <div className="toh_right_body_bottom_top">
               <span className="toh_right_body_bottom_top_header">
-                No. of Disk
+                No. of disks
               </span>
               <Slider
+                aria-label="Number of disks"
+                valueLabelDisplay="auto"
+                step={1}
                 marks
                 min={MIN_RING_COUNT}
                 max={MAX_RING_COUNT}
-                value={diskCount}
+                defaultValue={DEFAULT_RING_COUNT}
+                onChangeCommitted={onDiskCountChange}
                 onChange={onDiskCountChange}
                 sx={{
                   width: "250px",
