@@ -169,6 +169,10 @@ function TowerOfHanoi() {
                 sx={{
                   width: "250px",
                   color: "#c0c0c0",
+
+                  "& .MuiSlider-valueLabelLabel": {
+                    fontSize: "20px",
+                  },
                 }}
               />
             </div>
