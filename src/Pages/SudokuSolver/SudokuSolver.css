@@ -2,15 +2,15 @@
   width: 5rem;
   height: 5rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3.4rem;
 
   /* border: 1px solid #171b27;
     background-color: #212435;
     color: #b0b3bc; */
   border: 1px solid #595959;
-  background-color: var(--grey);
+  background-color: #e7e7e7;
   color: #363636;
-  font-weight: 100;
+  font-weight: 550;
 }
 
 .number-input:focus {
