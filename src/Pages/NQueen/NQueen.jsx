@@ -1,21 +1,17 @@
-import React from "react";
 import "./NQueen.css";
-import Grid from "../../Components/NQueen/Grid/Grid";
-import Slider from "@mui/material/Slider";
-
-import { useState, useEffect } from "react";
 import NQueenAlgo from "./Algorithm/NQueen";
+
+import Grid from "../../Components/NQueen/Grid/Grid";
 import SideBar from "../../Components/SideBar/SideBar";
+
 import slowTurtle from "../../assets/images/mdi_tortoise.png";
 import slowestTurtle from "../../assets/images/fluent_animal-turtle-24-filled.png";
 import slowRabbit from "../../assets/images/fluent_animal-rabbit-20-filled.png";
 import fastRabbit from "../../assets/images/mdi_rabbit.png";
 
+import React, { useState, useEffect } from "react";
+
 const DEFAULT_SPEED = 4;
-const MIN_SPEED = 1;
-const MAX_SPEED = 10;
-const MIN_GRID_SIZE = 4;
-const MAX_GRID_SIZE = 8;
 const DEFAULT_GRID_SIZE = 4;
 
 const NQueen = () => {
@@ -31,15 +27,17 @@ const NQueen = () => {
       for (let col = 0; col < gridSize; col++) {
         currentRow.push(createNode(row, col));
       }
+
       grid.push(currentRow);
     }
+
     return grid;
   };
 
   const createNode = (row, col) => {
     return {
-      col, //j
-      row, //i
+      row,
+      col,
       hasQueen: false,
       isActive: false,
       id: `${row}-${col}`,
@@ -48,11 +46,12 @@ const NQueen = () => {
 
   useEffect(() => {
     document.title = "N-Queens";
-    
+
     const initialGrid = getInitialGrid();
     setGrid(initialGrid);
     setSolution(null);
-  }, [gridSize]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const solveNQueen = () => {
     if (!solution) {
@@ -65,7 +64,7 @@ const NQueen = () => {
 
   const visualizeNQueen = () => {
     let animations = [];
-    console.log(gridSize);
+
     if (!solution) {
       const soln = NQueenAlgo(grid, gridSize, gridSize);
       setSolution(soln);
@@ -81,15 +80,6 @@ const NQueen = () => {
     }
   };
 
-  const onSpeedChange = (e) => {
-    e.target.value && setSpeed(e.target.value);
-  };
-
-  const changeGridSize = (e) => {
-    console.log("hello");
-    e.target.value && setGridSize(e.target.value);
-  };
-
   const clearBoard = () => {
     const initialGrid = getInitialGrid();
     setGrid(initialGrid);
@@ -101,13 +91,13 @@ const NQueen = () => {
       <div className="nqueen_left">
         <SideBar active="nqueen" />
       </div>
+
       <div className="nqueen_right">
         <div className="nqueen_div_top">
           <div className="nqueen_div_top_left">
-            <span className="nqueen_div_top_left_header">
-              N-Queens
-            </span>
+            <span className="nqueen_div_top_left_header">N-Queens</span>
           </div>
+
           <div className="nqueen_div_top_right">
             <div className="nqueen_div_top_right_item margin_right_2">
               <button
@@ -117,6 +107,7 @@ const NQueen = () => {
                 Visualize
               </button>
             </div>
+
             <div className="nqueen_div_top_right_item margin_right_2">
               <button
                 className="nqueen_div_top_right_item_button fill_button"
@@ -125,6 +116,7 @@ const NQueen = () => {
                 Solve
               </button>
             </div>
+
             <div className="nqueen_div_top_right_item">
               <button
                 className="nqueen_div_top_right_item_button"
@@ -140,6 +132,7 @@ const NQueen = () => {
           <div className="nqueen_right_body_left">
             <div className="nqueen_right_body_left_grid_left">
               <Grid grid={grid} gridSize={gridSize} />
+
               <div className="nqueen_right_body_left_grid_right">
                 <div
                   className="nqueen_right_body_left_grid_right_item-1"
@@ -147,24 +140,28 @@ const NQueen = () => {
                     setGridSize(8);
                   }}
                 ></div>
+
                 <div
                   className="nqueen_right_body_left_grid_right_item-2"
                   onClick={() => {
                     setGridSize(7);
                   }}
                 ></div>
+
                 <div
                   className="nqueen_right_body_left_grid_right_item-3"
                   onClick={() => {
                     setGridSize(6);
                   }}
                 ></div>
+
                 <div
                   className="nqueen_right_body_left_grid_right_item-4"
                   onClick={() => {
                     setGridSize(5);
                   }}
                 ></div>
+
                 <div
                   className="nqueen_right_body_left_grid_right_item-5"
                   onClick={() => {
@@ -173,11 +170,12 @@ const NQueen = () => {
                 ></div>
               </div>
             </div>
+
             <div className="nqueen_right_body_left_bottom">
               <div className="pathFinder_bottom_item">
                 <img
                   className={`pathFinder_bottom_item_speedIcon ${
-                    speed == 4 && "pathFinder_bottom_item_speedIcon_active"
+                    speed === 4 && "pathFinder_bottom_item_speedIcon_active"
                   }`}
                   src={slowestTurtle}
                   alt=""
@@ -186,10 +184,11 @@ const NQueen = () => {
                   }}
                 />
               </div>
+
               <div className="pathFinder_bottom_item">
                 <img
                   className={`pathFinder_bottom_item_speedIcon ${
-                    speed == 3 && "pathFinder_bottom_item_speedIcon_active"
+                    speed === 3 && "pathFinder_bottom_item_speedIcon_active"
                   }`}
                   src={slowTurtle}
                   alt=""
@@ -198,10 +197,11 @@ const NQueen = () => {
                   }}
                 />
               </div>
+
               <div className="pathFinder_bottom_item">
                 <img
                   className={`pathFinder_bottom_item_speedIcon ${
-                    speed == 1.5 && "pathFinder_bottom_item_speedIcon_active"
+                    speed === 1.5 && "pathFinder_bottom_item_speedIcon_active"
                   }`}
                   src={slowRabbit}
                   onClick={() => {
@@ -210,10 +210,11 @@ const NQueen = () => {
                   alt=""
                 />
               </div>
+
               <div className="pathFinder_bottom_item">
                 <img
                   className={`pathFinder_bottom_item_speedIcon ${
-                    speed == 1 && "pathFinder_bottom_item_speedIcon_active"
+                    speed === 1 && "pathFinder_bottom_item_speedIcon_active"
                   }`}
                   src={fastRabbit}
                   alt=""
@@ -224,12 +225,14 @@ const NQueen = () => {
               </div>
             </div>
           </div>
+
           <div className="nqueen_right_body_right">
             <div className="nqueen_right_body_right_top">
               <span className="nqueen_right_body_right__top_header">
                 DESCRIPTION
               </span>
             </div>
+
             <div className="nqueen_right_body_right_bottom">
               <p className="nqueen_right_body_right_bottom_para">
                 The N-Queens problem is a classic puzzle that involves placing N

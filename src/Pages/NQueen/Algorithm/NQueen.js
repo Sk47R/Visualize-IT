@@ -1,4 +1,4 @@
-function NQueenAlgo(grid, rows, cols) {
+function NQueenAlgo(grid) {
   const animation = [];
   let addAnimation = true;
   const gridSize = grid.length;
@@ -10,14 +10,12 @@ function NQueenAlgo(grid, rows, cols) {
   }
 
   function isSafe(row, col) {
-    let i, j;
-
     // for each column checking in all the rows
-    for (i = 0; i < row; i++) {
+    for (let i = 0; i < row; i++) {
       if (grid[i][col].hasQueen) return false;
     }
 
-    // checking for diagonals (left diagonal)
+    // check for diagonals (left diagonal)
     let x = row;
     let y = col;
     while (x >= 0 && y >= 0) {
@@ -25,7 +23,8 @@ function NQueenAlgo(grid, rows, cols) {
       x--;
       y--;
     }
-    // checking for diagonals (right diagonal)
+
+    // check for diagonals (right diagonal)
     x = row;
     y = col;
     while (x >= 0 && y < gridSize) {
@@ -45,25 +44,28 @@ function NQueenAlgo(grid, rows, cols) {
         animation.push(solutionGrid);
         addAnimation = false;
       }
+
       return true;
     }
 
     // checking for safe position in each column for all rows
     for (let j = 0; j < gridSize; j++) {
       if (addAnimation) saveAnimation(row, j);
+
       if (isSafe(row, j)) {
         grid[row][j].hasQueen = true;
         if (addAnimation) saveAnimation(row, j);
         if (placeQueen(row + 1)) return true;
 
-        grid[row][j].hasQueen = false; //backtracking
+        grid[row][j].hasQueen = false; // backtracking
       }
     }
 
     return false;
   }
+
   if (placeQueen(0)) {
-    console.log("Solution Found!!!");
+    console.log("Solution found!");
   }
 
   return { grid, animation };
