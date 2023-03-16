@@ -27,13 +27,13 @@
 
 .Disk {
   width: 120px;
-  height: 20px;
-  background-color: var(--ash);
+  height: 25px;
+  background-color: #c37235;
   margin-top: 3px;
-  color: #fafafa;
+  color: whitesmoke;
   font-size: 18px;
-  font-weight: 100;
-  border: 3px solid var(--ash);
+  font-weight: normal;
+  border: 3px solid #a85718;
   border-radius: 10px;
   display: flex;
   justify-content: center;
