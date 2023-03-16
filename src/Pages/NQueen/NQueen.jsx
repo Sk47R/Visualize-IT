@@ -63,7 +63,7 @@ const NQueen = () => {
     }
   };
 
-  const visualizeNQeen = () => {
+  const visualizeNQueen = () => {
     let animations = [];
     console.log(gridSize);
     if (!solution) {
@@ -112,7 +112,7 @@ const NQueen = () => {
             <div className="nqueen_div_top_right_item margin_right_2">
               <button
                 className="nqueen_div_top_right_item_button fill_button"
-                onClick={visualizeNQeen}
+                onClick={visualizeNQueen}
               >
                 Visualize
               </button>
