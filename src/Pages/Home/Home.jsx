@@ -19,11 +19,11 @@ const Home = () => {
       <div className="home_slider">
         <Carousel interval={3000}>
           <Carousel.Item>
-            <Link to="/sudoku-solver">
+            <Link to="/path-finder">
               <img
                 className="d-block w-100 slide_image"
-                src={suduku_home}
-                alt="First slide"
+                src={pathFinder_home}
+                alt="Third slide"
               />
             </Link>
           </Carousel.Item>
@@ -37,11 +37,11 @@ const Home = () => {
             </Link>
           </Carousel.Item>
           <Carousel.Item>
-            <Link to="/path-finder">
+            <Link to="/sudoku-solver">
               <img
                 className="d-block w-100 slide_image"
-                src={pathFinder_home}
-                alt="Third slide"
+                src={suduku_home}
+                alt="First slide"
               />
             </Link>
           </Carousel.Item>
