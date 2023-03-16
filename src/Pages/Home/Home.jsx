@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
-import bg from "../../assets/images/Bg_individual.png";
+import bg from "../../assets/images/brain_bg.png";
 import sudoku_home from "../../assets/images/sudoku_home.png";
 import chess_home from "../../assets/images/chess_home.png";
 import pathFinder_home from "../../assets/images/pathFinder_home.png";
 import toh_home from "../../assets/images/toh_home.png";
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/Visualizeit.png";
+
 const Home = () => {
   useEffect(() => {
     document.title = "VisualizeIT";
@@ -15,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <span className="home_header">VisualizeIT</span>
+      <img src={logo} alt="" className="pro_logo" />
       <div className="home_slider">
         <Carousel interval={3000}>
           <Carousel.Item>
