@@ -10,12 +10,12 @@ function NQueenAlgo(grid) {
   }
 
   function isSafe(row, col) {
-    // for each column checking in all the rows
+    // check the cells in the same column above the current row
     for (let i = 0; i < row; i++) {
       if (grid[i][col].hasQueen) return false;
     }
 
-    // check for diagonals (left diagonal)
+    // check for diagonals (left) above the current row
     let x = row;
     let y = col;
     while (x >= 0 && y >= 0) {
@@ -24,7 +24,7 @@ function NQueenAlgo(grid) {
       y--;
     }
 
-    // check for diagonals (right diagonal)
+    // check for diagonals (right) above the current row
     x = row;
     y = col;
     while (x >= 0 && y < gridSize) {
