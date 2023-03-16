@@ -118,24 +118,24 @@ function TowerOfHanoi() {
         <SideBar active="toh" />
       </div>
       <div className="toh_right">
-        <div className="sudukuSolver_right_top">
-          <div className="sudukuSolver_right_top_left">
-            <span className="sudukuSolver_right_top_left_header">
+        <div className="sudokuSolver_right_top">
+          <div className="sudokuSolver_right_top_left">
+            <span className="sudokuSolver_right_top_left_header">
               Tower of Hanoi
             </span>
           </div>
-          <div className="sudukuSolver_right_top_right">
-            <div className="sudukuSolver_right_top_right_item margin_right_2">
+          <div className="sudokuSolver_right_top_right">
+            <div className="sudokuSolver_right_top_right_item margin_right_2">
               <button
-                className="sudukuSolver_right_top_right_item_button fill_button"
+                className="sudokuSolver_right_top_right_item_button fill_button"
                 onClick={() => solveHanoi(tower0.length)}
               >
                 Solve
               </button>
             </div>
-            <div className="sudukuSolver_right_top_right_item">
+            <div className="sudokuSolver_right_top_right_item">
               <button
-                className="sudukuSolver_right_top_right_item_button"
+                className="sudokuSolver_right_top_right_item_button"
                 onClick={reset}
               >
                 Reset{" "}

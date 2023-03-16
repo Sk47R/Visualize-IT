@@ -102,21 +102,21 @@ function SudokuSolver() {
   };
 
   return (
-    <div className="sudukuSolver">
-      <div className="sudukuSolver_left">
+    <div className="sudokuSolver">
+      <div className="sudokuSolver_left">
         <SideBar active="sudoku" />
       </div>
-      <div className="sudukuSolver_right">
-        <div className="sudukuSolver_right_top">
-          <div className="sudukuSolver_right_top_left">
-            <span className="sudukuSolver_right_top_left_header">
-              Suduku Solver
+      <div className="sudokuSolver_right">
+        <div className="sudokuSolver_right_top">
+          <div className="sudokuSolver_right_top_left">
+            <span className="sudokuSolver_right_top_left_header">
+              Sudoku Solver
             </span>
           </div>
-          <div className="sudukuSolver_right_top_right">
-            <div className="sudukuSolver_right_top_right_item margin_right_2">
+          <div className="sudokuSolver_right_top_right">
+            <div className="sudokuSolver_right_top_right_item margin_right_2">
               <button
-                className="sudukuSolver_right_top_right_item_button fill_button"
+                className="sudokuSolver_right_top_right_item_button fill_button"
                 disabled={visualize}
                 onClick={() => {
                   if (!isValidSudoku()) return alert("Invalid Sudoku");
@@ -129,9 +129,9 @@ function SudokuSolver() {
                 Visualize
               </button>
             </div>
-            <div className="sudukuSolver_right_top_right_item margin_right_2">
+            <div className="sudokuSolver_right_top_right_item margin_right_2">
               <button
-                className="sudukuSolver_right_top_right_item_button fill_button"
+                className="sudokuSolver_right_top_right_item_button fill_button"
                 disabled={visualize}
                 onClick={() => {
                   if (!isValidSudoku()) return alert("Invalid Sudoku");
@@ -141,9 +141,9 @@ function SudokuSolver() {
                 Solve
               </button>
             </div>
-            <div className="sudukuSolver_right_top_right_item">
+            <div className="sudokuSolver_right_top_right_item">
               <button
-                className="sudukuSolver_right_top_right_item_button"
+                className="sudokuSolver_right_top_right_item_button"
                 onClick={() => navigate(0)}
               >
                 Clear Board
@@ -152,8 +152,8 @@ function SudokuSolver() {
           </div>
         </div>
 
-        <div className="sudukuSolver_right_body">
-          <div className="sudukuSolver_right_body_left">
+        <div className="sudokuSolver_right_body">
+          <div className="sudokuSolver_right_body_left">
             {grid.map((row, i) => (
               <Grid item key={i} className="row" width="fit-content">
                 {row.map((cell, j) => (
@@ -182,7 +182,7 @@ function SudokuSolver() {
               </Grid>
             ))}
           </div>
-          <div className="sudukuSolver_right_body_right">
+          <div className="sudokuSolver_right_body_right">
             <div className="nqueen_right_body_right_top">
               <span className="nqueen_right_body_right__top_header">
                 DESCRIPTION

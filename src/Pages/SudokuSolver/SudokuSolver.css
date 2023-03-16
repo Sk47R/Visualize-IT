@@ -42,7 +42,7 @@
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-.sudukuSolver {
+.sudokuSolver {
   width: 100%;
 
   width: 100%;
@@ -53,14 +53,14 @@
   background-size: cover;
   font-size: 1.6rem;
 }
-.sudukuSolver_left {
+.sudokuSolver_left {
   flex: 0.08;
 }
-.sudukuSolver_right {
+.sudokuSolver_right {
   flex: 0.98;
 }
 
-.sudukuSolver_right_top {
+.sudokuSolver_right_top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,18 +70,18 @@
   height: 6.5rem;
 }
 
-.sudukuSolver_right_top_left_header {
+.sudokuSolver_right_top_left_header {
   color: var(--grey);
   font-size: 3rem;
   letter-spacing: 0.2rem;
 }
-.sudukuSolver_right_top_right {
+.sudokuSolver_right_top_right {
   display: flex;
 }
 .margin_right_2 {
   margin-right: 2rem;
 }
-.sudukuSolver_right_top_right_item_button {
+.sudokuSolver_right_top_right_item_button {
   /* height: 3.3rem; */
   padding: 0.8rem 2rem;
   border: 2px solid var(--grey);
@@ -97,12 +97,12 @@
   color: black;
 }
 
-.sudukuSolver_right_body {
+.sudokuSolver_right_body {
   display: flex;
   padding: 0 2rem;
   margin-top: 5rem;
 }
-.sudukuSolver_right_body_left {
+.sudokuSolver_right_body_left {
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -111,7 +111,7 @@
   align-items: center;
   flex: 1;
 }
-.sudukuSolver_right_body_right {
+.sudokuSolver_right_body_right {
   flex: 1;
   display: flex;
   flex-direction: column;
