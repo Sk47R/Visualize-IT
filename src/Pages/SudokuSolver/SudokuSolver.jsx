@@ -1,10 +1,17 @@
 import "./SudokuSolver.css";
 
+import slowTurtle from "../../assets/images/mdi_tortoise.png";
+import slowestTurtle from "../../assets/images/fluent_animal-turtle-24-filled.png";
+import slowRabbit from "../../assets/images/fluent_animal-rabbit-20-filled.png";
+import fastRabbit from "../../assets/images/mdi_rabbit.png";
+
 import Grid from "@mui/material/Grid";
 import SideBar from "../../Components/SideBar/SideBar";
 
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+
+const DEFAULT_SPEED = 4;
 
 function SudokuSolver() {
   const navigate = useNavigate();
@@ -21,7 +28,7 @@ function SudokuSolver() {
 
   const [steps] = useState([]);
   const [visualize, setVisualize] = useState(false);
-  const [visualizeSpeed] = useState(500);
+  const [visualizeSpeed, setVisualizeSpeed] = useState(DEFAULT_SPEED);
 
   const possible = (row, col, n) => {
     for (let i = 0; i < 9; i++) {
@@ -181,6 +188,61 @@ function SudokuSolver() {
                 ))}
               </Grid>
             ))}
+
+            <div className="nqueen_right_body_left_bottom">
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    visualizeSpeed === 4 &&
+                    "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={slowestTurtle}
+                  alt=""
+                  onClick={() => {
+                    setVisualizeSpeed(4);
+                  }}
+                />
+              </div>
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    visualizeSpeed === 3 &&
+                    "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={slowTurtle}
+                  alt=""
+                  onClick={() => {
+                    setVisualizeSpeed(3);
+                  }}
+                />
+              </div>
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    visualizeSpeed === 1.5 &&
+                    "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={slowRabbit}
+                  onClick={() => {
+                    setVisualizeSpeed(1.5);
+                  }}
+                  alt=""
+                />
+              </div>
+              <div className="pathFinder_bottom_item">
+                <img
+                  className={`pathFinder_bottom_item_speedIcon ${
+                    visualizeSpeed === 1 &&
+                    "pathFinder_bottom_item_speedIcon_active"
+                  }`}
+                  src={fastRabbit}
+                  alt=""
+                  onClick={() => {
+                    setVisualizeSpeed(1);
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <div className="sudokuSolver_right_body_right">
             <div className="nqueen_right_body_right_top">
