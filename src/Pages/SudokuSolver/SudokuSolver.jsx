@@ -112,12 +112,12 @@ function SudokuSolver() {
     return true;
   };
 
-  const visualizeSolve = async () => {
-    for (let step of steps) {
-      setGrid(step);
-      await new Promise((resolve) => {
-        setTimeout(resolve, visualizeSpeed);
-      });
+  const visualizeSolve = () => {
+    setGrid(steps[0]);
+    for (let i = 1; i < steps.length; i++) {
+      setTimeout(() => {
+        setGrid(steps[i]);
+      }, i * visualizeSpeed * 50);
     }
   };
 
