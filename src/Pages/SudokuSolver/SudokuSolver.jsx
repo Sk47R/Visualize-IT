@@ -179,7 +179,7 @@ function SudokuSolver() {
                 className="sudokuSolver_right_top_right_item_button"
                 onClick={() => navigate(0)}
               >
-                Clear Board
+                Clear Grid
               </button>
             </div>
           </div>

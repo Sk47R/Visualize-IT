@@ -46,10 +46,14 @@
   border-radius: 8px;
   background-color: transparent;
   cursor: pointer;
+  font-weight: 550;
+  letter-spacing: 0.05rem;
 }
 .fill_button {
   background-color: var(--grey);
   color: black;
+  font-weight: 550;
+  letter-spacing: 0.05rem;
 }
 .pathFinder_bottom {
   display: flex;
